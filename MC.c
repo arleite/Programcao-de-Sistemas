@@ -4,23 +4,21 @@
 
 int main()
 {
+    int contador = 0;
+    float salarioF;
     int a=1, opc1=0, opc2=0, opc3=0, opc4=0, opc5=0, opc6=0, opc7=0, check;
+    char caminhoF[] = "Files/Funcionarios";
     char* dirnameFuncionarios = "Funcionarios";
     char* dirnameFile = "Files";
-    char* texto[50];
-    char* contador[10]= {'10'};
+    char* nomeF[50], estatutoF[50];
+
+    FILE *FileF;
     FILE *ContadorFuncionarios = NULL;
 
 
     while (a==1){
 
         check = mkdir(dirnameFile, 0777);
-
-        if (!check)
-            printf("Directory created\n");
-        else {
-            printf("Unable to create directory\n");
-        }
 
         printf("\n--------------Menu----------------\n");
         printf("1 - Gestao da Empresa\n");
@@ -59,17 +57,60 @@ int main()
                 {
                 case 1:
                     check = mkdir("Files/Funcionarios", dirnameFile, 0777);
-                    if (!check)
+                    if (!check) { printf("Directory created\n"); } else { printf("Unable to create directory\n"); }
+
+                    printf("Nome");
+                    scanf("%s", &nomeF);
+                    printf("Estatuto");
+                    scanf("%s", &estatutoF);
+                    printf("Salario");
+                    scanf("%f", &salarioF);
+
+
+                    if(!ContadorFuncionarios)
                     {
-                        printf("Directory created\n");
+                       ContadorFuncionarios = fopen("Files/Funcionarios/ContadorFuncionarios.txt" ,"w");
+                       fprintf(ContadorFuncionarios, "%d", contador);
+                       fclose(ContadorFuncionarios);
                     }
-                    else
-                    {
-                        printf("Unable to create directory\n");
-                    }
-                    ContadorFuncionarios = fopen("Files/Funcionarios/ContadorFuncionarios.txt" ,"a");
-                    fprintf("%s", contador);
+
+
+
+
+                    ContadorFuncionarios = fopen ("Files/Funcionarios/ContadorFuncionarios.txt", "r");
+                    fscanf(ContadorFuncionarios, "%d", &contador);
+
+                    printf("%d", contador); //ler contador do ficheiro
+
+                    printf("%s",caminhoF);
+
+
+                    //strcpy(caminhoF, contador); /////////////o erro está aqui
+
+                    //sprintf(caminhoF, contador); //////////// tentei fazer com isto mas tambem não está a dar
+
+
+
+                    //printf("%s", caminhoF);
+
+                    //FileF = fopen(caminhoF, "w");
+
+                    //fprintf(FileF, "%s\n%s\n%f\n", nomeF, estatutoF, salarioF);
+
+                    //fclose(FileF);
+
+
+
+
                     fclose(ContadorFuncionarios);
+
+
+
+
+
+
+                    //fprintf("%s", contador);
+
                     break;
 
                 case 0:
