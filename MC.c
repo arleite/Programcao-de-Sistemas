@@ -4,10 +4,11 @@
 
 int main()
 {
-    int contador = 0;
+    int contador=0;
+    char contadorString[1000];
     float salarioF;
     int a=1, opc1=0, opc2=0, opc3=0, opc4=0, opc5=0, opc6=0, opc7=0, check;
-    char caminhoF[] = "Files/Funcionarios";
+    char caminhoF[] = "Files/Funcionarios/";
     char* dirnameFuncionarios = "Funcionarios";
     char* dirnameFile = "Files";
     char* nomeF[50], estatutoF[50];
@@ -59,11 +60,11 @@ int main()
                     check = mkdir("Files/Funcionarios", dirnameFile, 0777);
                     if (!check) { printf("Directory created\n"); } else { printf("Unable to create directory\n"); }
 
-                    printf("Nome");
+                    printf("Nome: ");
                     scanf("%s", &nomeF);
-                    printf("Estatuto");
+                    printf("Estatuto: ");
                     scanf("%s", &estatutoF);
-                    printf("Salario");
+                    printf("Salario: ");
                     scanf("%f", &salarioF);
 
 
@@ -74,30 +75,31 @@ int main()
                        fclose(ContadorFuncionarios);
                     }
 
-
-
-
                     ContadorFuncionarios = fopen ("Files/Funcionarios/ContadorFuncionarios.txt", "r");
                     fscanf(ContadorFuncionarios, "%d", &contador);
 
-                    printf("%d", contador); //ler contador do ficheiro
-
-                    printf("%s",caminhoF);
+                    sprintf(contadorString, "%d",contador);
 
 
-                    //strcpy(caminhoF, contador); /////////////o erro está aqui
-
-                    //sprintf(caminhoF, contador); //////////// tentei fazer com isto mas tambem não está a dar
-
+                    strcat(caminhoF, contadorString);
+                    strcat(caminhoF, ".txt");
 
 
-                    //printf("%s", caminhoF);
+                    FileF = fopen(caminhoF, "w");
+                    fprintf(FileF, "%s\n%s\n%f\n", nomeF, estatutoF, salarioF);
+                    fclose(FileF);
 
-                    //FileF = fopen(caminhoF, "w");
+                    contador += 1;
+                    strcpy(caminhoF, "Files/Funcionarios/");
 
-                    //fprintf(FileF, "%s\n%s\n%f\n", nomeF, estatutoF, salarioF);
+                    ContadorFuncionarios = fopen ("Files/Funcionarios/ContadorFuncionarios.txt", "w");
+                    fprintf(ContadorFuncionarios, "%d", contador);
 
-                    //fclose(FileF);
+                    //int atoi(const char* contadorString);
+
+
+
+
 
 
 
