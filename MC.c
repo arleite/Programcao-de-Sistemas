@@ -106,27 +106,25 @@ int main()
                     break;
 
                 case 2:
-                    printf("Introduza o Id do funcionário: ");
+                    printf("Introduza o Id do funcionario: ");
                     scanf("%d", &idFuncionario);
 
                     sprintf(iString, "%d", idFuncionario);
                     strcat(caminhoF, iString);
                     strcat(caminhoF, ".txt");
 
-                    FileF = caminhoF;
+                    FileF = fopen(caminhoF, "r");
 
-                    if(FileF != NULL)
+                    if(FileF)
                     {
                        remove(caminhoF);
                        printf("Funcionario eliminado com sucesso!");
+                       printf("\n%s", caminhoF);
                     }
                     else
                     {
-                        printf("O funcionario nao existe!");
+                        printf("Esse funcionario nao existe!");
                     }
-
-
-
 
                     break;
 
