@@ -3,29 +3,31 @@
 
 int main()
 {
-    int a=1, opcao, contador=1, idFuncionario;
+    int a=1, opcao, contador, idFuncionario;
     char nomeF[50], estatutoF[50];
     float salarioF;
     char* dirnameFuncionarios = "Funcionarios";
     char* dirnameFile = "Files";
-    char caminhoF[] = "Files/Funcionarios/";
-    char contadorString[100], iString[100], result;
-    char linha[100];
+    char  caminho[100], contadorString[100], iString[100], result, linha[100];
+
+    int quantidadeS;
+    char ingredienteS[50], validadeS[50];
 
     FILE *fileF;
     FILE *fileContadorFuncionario;
+    FILE *fileContadorStock;
 
    //funções
-    void contadorInteiro()
+    void contadorInteiroFuncionarios()
     {
         fileContadorFuncionario = fopen ("Files/Funcionarios/ContadorFuncionarios.txt", "r");
         fscanf(fileContadorFuncionario, "%d", &contador);
     }
 
-    void clearScreen()
+    void contadorInteiroStock()
     {
-      const char *CLEAR_SCREEN_ANSI = "\e[1;1H\e[2J";
-      write(STDOUT_FILENO, CLEAR_SCREEN_ANSI, 12);
+        fileContadorStock = fopen ("Files/Stock/ContadorFuncionarios.txt", "r");
+        fscanf(fileContadorStock, "%d", &contador);
     }
 
     while (a==1){
@@ -58,6 +60,7 @@ int main()
             switch (opcao)
             {
             case 1:
+                mkdir("Files/Funcionarios", 0777);
                 printf("\n--------------Menu----------------\n");
                 printf("\n1 - Adicionar funcionario\n");
                 printf("2 - Remover funcionario\n");
@@ -69,15 +72,14 @@ int main()
                 switch (opcao)
                 {
                 case 1:
-                    clearScreen();
-                    mkdir("Files/Funcionarios", dirnameFile, 0777);
-
                     printf("Nome: ");
                     scanf("%s", &nomeF);
                     printf("Estatuto: ");
                     scanf("%s", &estatutoF);
                     printf("Salario: ");
                     scanf("%f", &salarioF);
+
+                    contador = 1;
 
                     if(!fileContadorFuncionario)
                     {
@@ -86,20 +88,20 @@ int main()
                        fclose(fileContadorFuncionario);
                     }
 
-                    contadorInteiro(); //função para ir buscar o valor inteiro do ficheiro contador
+                    contadorInteiroFuncionarios(); //função para ir buscar o valor inteiro do ficheiro contador
 
                     sprintf(contadorString, "%d",contador); //passar o valor do contador para string, ou seja, contadorString
+                    strcpy(caminho, "Files/Funcionarios/"); //limpar variavel, copia o segundo parametro
+                    strcat(caminho, contadorString); //junta strings
+                    strcat(caminho, ".txt");
 
-                    strcat(caminhoF, contadorString); //junta strings
-                    strcat(caminhoF, ".txt");
-
-                    fileF = fopen(caminhoF, "w");
+                    fileF = fopen(caminho, "w");
                     fprintf(fileF, "%s\n%s\n%.2f\n", nomeF, estatutoF, salarioF);
                     fclose(fileF);
 
-                    contador += 1;
+                    printf("\nO ID do funcionario %s e %d!", nomeF, contador);
 
-                    strcpy(caminhoF, "Files/Funcionarios/"); //limpar variavel, copia o segundo parametro
+                    contador += 1;
 
                     fileContadorFuncionario = fopen ("Files/Funcionarios/ContadorFuncionarios.txt", "w");
                     fprintf(fileContadorFuncionario, "%d", contador);
@@ -108,58 +110,51 @@ int main()
                     break;
 
                 case 2:
-                    clearScreen();
-//                    do{
-//                    printf("Precione Esc para voltar atras\n");
-//                    printf("Intruduza o ID do funcionario a remover: ");
-//                    scanf("%d", &idFuncionario);
-//
-//                    }while(isdigit(iString));
                     printf("\nPressione 0 para voltar.\n");
                     printf("Introduza o Id do funcionario: ");
                     scanf("%d", &idFuncionario);
 
                     if(idFuncionario == 0) break;
 
+                    strcpy(caminho, "Files/Funcionarios/");
                     sprintf(iString, "%d", idFuncionario);
-                    strcat(caminhoF, iString);
-                    strcat(caminhoF, ".txt");
+                    strcat(caminho, iString);
+                    strcat(caminho, ".txt");
 
-                    fileF = fopen(caminhoF, "r");
+                    fileF = fopen(caminho, "r");
                     fclose(fileF);
+
+                    printf("\n%s", caminho);
 
                     if(fileF)
                     {
-                       remove(caminhoF);
+                       remove(caminho);
                        printf("\n-----------------------------------\n");
                        printf("Funcionario eliminado com sucesso!");
                        printf("\n-----------------------------------\n\n");
-                       strcpy(caminhoF, "Files/Funcionarios/");
-                       //printf("\n%s", caminhoF);
                     }
                     else
                     {
                         printf("\n-----------------------------------\n");
                         printf("\nEsse funcionario nao existe!");
                         printf("\n-----------------------------\n\n");
-                        //printf("\n%s", caminhoF);
+                        //printf("\n%s", caminho);
                     }
 
                     break;
 
                 case 3:
-                    clearScreen();
-                    contadorInteiro();
+                    contadorInteiroFuncionarios();
 
                     for(int i = 1; contador > i;i++)
                     {
-                        strcpy(caminhoF, "Files/Funcionarios/");
+                        strcpy(caminho, "Files/Funcionarios/");
                         sprintf(iString, "%d", i);
                         strcat(iString, ".txt");
-                        strcat(caminhoF, iString);
+                        strcat(caminho, iString);
 
-                        fileF = fopen(caminhoF, "r");
-                        //printf("\n%s", caminhoF); Ver caminho
+                        fileF = fopen(caminho, "r");
+                        //printf("\n%s", caminho); Ver caminho
                         if(fileF)
                         {
                             int k = 0;
@@ -200,11 +195,68 @@ int main()
 
             case 2:
                 printf("\n--------------Menu----------------\n");
-                printf("\n1 - Adicionar stock\n");
+                printf("\n1 - Adicionar stock\n"); //criar uma pasta ingredientes com um txt do produto, e dentro a quantidade
                 printf("2 - Remover stock\n");
+                printf("3 - Listar Stock");
                 printf("\n0 - Voltar\n");
                 printf("\nSelecione uma opcao: ");
                 scanf("%d", &opcao);
+
+                switch (opcao)
+                {
+                case 1:
+                    mkdir("Files/Stock", 0777);
+
+                    contador = 1;
+
+                    printf("Ingrediente: ");
+                    scanf("%s", &ingredienteS);
+                    printf("Quantidade: ");
+                    scanf("%d", &quantidadeS);
+                    printf("Data de validade(dd/mm/aaaa): ");
+                    scanf("%s", &validadeS);
+
+                    if(!fileContadorStock)
+                    {
+                       fileContadorStock = fopen("Files/Stock/ContadorStock.txt" ,"w");
+                       fprintf(fileContadorStock, "%d", contador);
+                       fclose(fileContadorStock);
+                    }
+
+                    contadorInteiroStock();
+
+                    sprintf(contadorString, "%d",contador); //passar o valor do contador para string, ou seja, contadorString
+
+                    strcpy(caminho, "Files/Stock/"); //limpar variavel, copia o segundo parametro
+                    strcat(caminho, contadorString); //junta strings
+                    strcat(caminho, ".txt");
+
+                    fileF = fopen(caminho, "w");
+                    fprintf(fileF, "%s\n%d\n%s\n", ingredienteS, quantidadeS, validadeS);
+                    fclose(fileF);
+
+                    printf("\nO ID do ingrediente %s e %d!", ingredienteS, contador);
+
+                    contador += 1;
+
+                    fileContadorStock = fopen ("Files/Stock/ContadorStock.txt", "w");
+                    fprintf(fileContadorStock, "%d", contador);
+                    fclose(fileContadorStock);
+
+                    break;
+
+                case 2:
+
+                    break;
+
+
+                case 3:
+
+
+                    break;
+
+                }
+
                 break;
 
             case 3:
