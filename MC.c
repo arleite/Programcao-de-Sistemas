@@ -16,9 +16,17 @@ int main()
     FILE *fileContadorFuncionario;
 
    //funções
-    void contadorInteiro(){
+    void contadorInteiro()
+    {
         fileContadorFuncionario = fopen ("Files/Funcionarios/ContadorFuncionarios.txt", "r");
-        fscanf(fileContadorFuncionario, "%d", &contador);}
+        fscanf(fileContadorFuncionario, "%d", &contador);
+    }
+
+    void clearScreen()
+    {
+      const char *CLEAR_SCREEN_ANSI = "\e[1;1H\e[2J";
+      write(STDOUT_FILENO, CLEAR_SCREEN_ANSI, 12);
+    }
 
     while (a==1){
         mkdir(dirnameFile, 0777);
@@ -61,6 +69,7 @@ int main()
                 switch (opcao)
                 {
                 case 1:
+                    clearScreen();
                     mkdir("Files/Funcionarios", dirnameFile, 0777);
 
                     printf("Nome: ");
@@ -99,13 +108,14 @@ int main()
                     break;
 
                 case 2:
+                    clearScreen();
 //                    do{
 //                    printf("Precione Esc para voltar atras\n");
 //                    printf("Intruduza o ID do funcionario a remover: ");
 //                    scanf("%d", &idFuncionario);
 //
 //                    }while(isdigit(iString));
-                    printf("\nPressione 0 para voltar\n");
+                    printf("\nPressione 0 para voltar.\n");
                     printf("Introduza o Id do funcionario: ");
                     scanf("%d", &idFuncionario);
 
@@ -138,45 +148,46 @@ int main()
                     break;
 
                 case 3:
-
+                    clearScreen();
                     contadorInteiro();
 
-                    for(int i = 0; contador > i;i++)
+                    for(int i = 1; contador > i;i++)
                     {
-
+                        strcpy(caminhoF, "Files/Funcionarios/");
                         sprintf(iString, "%d", i);
                         strcat(iString, ".txt");
                         strcat(caminhoF, iString);
 
                         fileF = fopen(caminhoF, "r");
-
-                        int k = 0;
-                        while (!feof(fileF))
+                        //printf("\n%s", caminhoF); Ver caminho
+                        if(fileF)
                         {
-                            result = fgets(linha, 100, fileF);
+                            int k = 0;
+                            while (!feof(fileF))
+                                {
+                                    result = fgets(linha, 100, fileF);
 
-                            if(result)
-                            {
-                                if(k==0)
-                                {
-                                    printf("\n--------------------\n\n");
-                                    printf("Id: %d\n", i);
-                                    printf("Nome: %s", linha);
-                                }
-                                if(k==1)
-                                {
-                                    printf("Estatuto: %s", linha);
-                                }
-                                if(k==2)
-                                {
-                                    printf("Salario: %s", linha);
-                                }
+                                    if(result)
+                                    {
+                                        if(k==0)
+                                        {
+                                            printf("\n--------------------\n\n");
+                                            printf("Id: %d\n", i);
+                                            printf("Nome: %s", linha);
+                                        }
+                                        if(k==1)
+                                        {
+                                            printf("Estatuto: %s", linha);
+                                        }
+                                        if(k==2)
+                                        {
+                                            printf("Salario: %s", linha);
+                                        }
+                                    }
+                                k++;
                             }
-                            k++;
-                        }
                         fclose(fileF);
-
-                        strcpy(caminhoF, "Files/Funcionarios/");
+                        }
                     }
 
                     break;
