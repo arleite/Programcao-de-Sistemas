@@ -3,7 +3,7 @@
 
 int main()
 {
-    int a=1, opcao, contador, idFuncionario;
+    int a=1, opcao, contador=1, idFuncionario;
     char nomeF[50], estatutoF[50];
     float salarioF;
     char* dirnameFuncionarios = "Funcionarios";
@@ -105,9 +105,11 @@ int main()
 //                    scanf("%d", &idFuncionario);
 //
 //                    }while(isdigit(iString));
-
+                    printf("\nPressione 0 para voltar\n");
                     printf("Introduza o Id do funcionario: ");
                     scanf("%d", &idFuncionario);
+
+                    if(idFuncionario == 0) break;
 
                     sprintf(iString, "%d", idFuncionario);
                     strcat(caminhoF, iString);
@@ -119,13 +121,17 @@ int main()
                     if(fileF)
                     {
                        remove(caminhoF);
+                       printf("\n-----------------------------------\n");
                        printf("Funcionario eliminado com sucesso!");
+                       printf("\n-----------------------------------\n\n");
                        strcpy(caminhoF, "Files/Funcionarios/");
                        //printf("\n%s", caminhoF);
                     }
                     else
                     {
-                        printf("Esse funcionario nao existe!");
+                        printf("\n-----------------------------------\n");
+                        printf("\nEsse funcionario nao existe!");
+                        printf("\n-----------------------------\n\n");
                         //printf("\n%s", caminhoF);
                     }
 
