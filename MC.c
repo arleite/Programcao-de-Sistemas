@@ -99,23 +99,34 @@ int main()
                     break;
 
                 case 2:
-                    printf("Introduza o Id do funcionário: ");
+//                    do{
+//                    printf("Precione Esc para voltar atras\n");
+//                    printf("Intruduza o ID do funcionario a remover: ");
+//                    scanf("%d", &idFuncionario);
+//
+//                    }while(isdigit(iString));
+
+                    printf("Introduza o Id do funcionario: ");
                     scanf("%d", &idFuncionario);
 
                     sprintf(iString, "%d", idFuncionario);
                     strcat(caminhoF, iString);
                     strcat(caminhoF, ".txt");
 
-                    fileF = caminhoF;
+                    fileF = fopen(caminhoF, "r");
+                    fclose(fileF);
 
-                    if(fileF != NULL)
+                    if(fileF)
                     {
                        remove(caminhoF);
                        printf("Funcionario eliminado com sucesso!");
+                       strcpy(caminhoF, "Files/Funcionarios/");
+                       //printf("\n%s", caminhoF);
                     }
                     else
                     {
-                        printf("O funcionario nao existe!");
+                        printf("Esse funcionario nao existe!");
+                        //printf("\n%s", caminhoF);
                     }
 
                     break;
