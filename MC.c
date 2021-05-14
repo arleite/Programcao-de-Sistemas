@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 int main()
 {
-    int a=1, opcao, contador, idFuncionario;
+    int a=1, b=1, opcao, letras = 0, contador, id;
     char nomeF[50], estatutoF[50];
     float salarioF;
     char* dirnameFuncionarios = "Funcionarios";
@@ -11,24 +12,22 @@ int main()
     char  caminho[100], contadorString[100], iString[100], result, linha[100];
 
     int quantidadeS;
-    char ingredienteS[50], validadeS[50];
+    char ingredienteS;
 
     FILE *fileF;
     FILE *fileContadorFuncionario;
     FILE *fileContadorStock;
 
    //funções
-    void contadorInteiroFuncionarios()
-    {
+    void contadorInteiroFuncionarios(){
         fileContadorFuncionario = fopen ("Files/Funcionarios/ContadorFuncionarios.txt", "r");
         fscanf(fileContadorFuncionario, "%d", &contador);
     }
-
-    void contadorInteiroStock()
-    {
+    void contadorInteiroProduto(){
         fileContadorStock = fopen ("Files/Stock/ContadorFuncionarios.txt", "r");
         fscanf(fileContadorStock, "%d", &contador);
     }
+
 
     while (a==1){
         mkdir(dirnameFile, 0777);
@@ -51,7 +50,7 @@ int main()
             printf("3 - Gerir ementa\n"); //adicionar e remover
             printf("4 - Gerir clientes\n");//adicionar e remover
             printf("5 - Dinheiro total\n");
-            printf("\n0 - Voltar\n");
+            printf("\n0 - Voltar ao menu inicial\n");
             printf("\nSelecione uma opcao: ");
             scanf("%d", &opcao);
 
@@ -65,7 +64,8 @@ int main()
                 printf("\n1 - Adicionar funcionario\n");
                 printf("2 - Remover funcionario\n");
                 printf("3 - Listar funcionarios\n");
-                printf("\n0 - Voltar\n");
+                printf("\n9 - Voltar ao menu anterior\n");
+                printf("0 - Voltar ao menu inicial\n");
                 printf("\nSelecione uma opcao: ");
                 scanf("%d", &opcao);
 
@@ -74,6 +74,27 @@ int main()
                 case 1:
                     printf("Nome: ");
                     scanf("%s", &nomeF);
+
+                    while (b == 1) //verificar que só introduziu letras
+                    {
+                        for (int i = 0; nomeF[i] != '\0'; i++)
+                        {
+                            if (isalpha(nomeF[i]))
+                                letras++;
+                        }
+                        if (strlen(nomeF) != letras)
+                        {
+                            letras = 0;
+                            printf("Introduza um nome!\n");
+                            printf("Nome: ");
+                            scanf("%s", &nomeF);
+                        }
+                        else
+                        {
+                            b = 0;
+                        }
+                    }
+
                     printf("Estatuto: ");
                     scanf("%s", &estatutoF);
                     printf("Salario: ");
@@ -112,12 +133,12 @@ int main()
                 case 2:
                     printf("\nPressione 0 para voltar.\n");
                     printf("Introduza o Id do funcionario: ");
-                    scanf("%d", &idFuncionario);
+                    scanf("%d", &id);
 
-                    if(idFuncionario == 0) break;
+                    if(id == 0) break;
 
                     strcpy(caminho, "Files/Funcionarios/");
-                    sprintf(iString, "%d", idFuncionario);
+                    sprintf(iString, "%d", id);
                     strcat(caminho, iString);
                     strcat(caminho, ".txt");
 
@@ -140,6 +161,7 @@ int main()
                         printf("\n-----------------------------\n\n");
                         //printf("\n%s", caminho);
                     }
+
 
                     break;
 
@@ -191,13 +213,14 @@ int main()
                     break;
                 }
 
-            break;
+
 
             case 2:
-                printf("\n--------------Menu----------------\n");
-                printf("\n1 - Adicionar stock\n"); //criar uma pasta ingredientes com um txt do produto, e dentro a quantidade
-                printf("2 - Remover stock\n");
-                printf("3 - Listar Stock");
+                printf("\n--------------Gestao de Stock----------------\n");
+                printf("\n1 - Adicionar produto\n"); //criar uma pasta ingredientes com um txt do produto, e dentro a quantidade
+                printf("2 - Editar stock\n");
+                printf("3 - Listar produto\n");
+                printf("4 - Eliminar produto\n");
                 printf("\n0 - Voltar\n");
                 printf("\nSelecione uma opcao: ");
                 scanf("%d", &opcao);
@@ -205,7 +228,7 @@ int main()
                 switch (opcao)
                 {
                 case 1:
-                    mkdir("Files/Stock", 0777);
+                    mkdir("Files/Produtos", 0777);
 
                     contador = 1;
 
@@ -213,51 +236,87 @@ int main()
                     scanf("%s", &ingredienteS);
                     printf("Quantidade: ");
                     scanf("%d", &quantidadeS);
-                    printf("Data de validade(dd/mm/aaaa): ");
-                    scanf("%s", &validadeS);
 
                     if(!fileContadorStock)
                     {
-                       fileContadorStock = fopen("Files/Stock/ContadorStock.txt" ,"w");
+                       fileContadorStock = fopen("Files/Produtos/ContadorProdutos.txt" ,"w");
                        fprintf(fileContadorStock, "%d", contador);
                        fclose(fileContadorStock);
                     }
 
-                    contadorInteiroStock();
+                    contadorInteiroProduto();
 
                     sprintf(contadorString, "%d",contador); //passar o valor do contador para string, ou seja, contadorString
 
-                    strcpy(caminho, "Files/Stock/"); //limpar variavel, copia o segundo parametro
+                    strcpy(caminho, "Files/Produtos/"); //limpar variavel, copia o segundo parametro
                     strcat(caminho, contadorString); //junta strings
                     strcat(caminho, ".txt");
 
                     fileF = fopen(caminho, "w");
-                    fprintf(fileF, "%s\n%d\n%s\n", ingredienteS, quantidadeS, validadeS);
+                    fprintf(fileF, "%s\n%d", ingredienteS, quantidadeS);
                     fclose(fileF);
 
                     printf("\nO ID do ingrediente %s e %d!", ingredienteS, contador);
 
                     contador += 1;
 
-                    fileContadorStock = fopen ("Files/Stock/ContadorStock.txt", "w");
+                    fileContadorStock = fopen ("Files/Produtos/ContadorProdutos.txt", "w");
                     fprintf(fileContadorStock, "%d", contador);
                     fclose(fileContadorStock);
 
                     break;
 
                 case 2:
+                    printf("1 - Adicionar stock\n");
+                    printf("2 - Remover stock\n");
+                    scanf("%d", &opcao);
+
+                    if(opcao == 1)
+                    {
+                        printf("Introduza o ID do produto a editar: \n");
+                        scanf("%d", &id);
+
+                        sprintf(iString, "%d", id);
+                        strcpy(caminho, "Files/Produtos/"); //limpar variavel, copia o segundo parametro
+                        strcat(caminho, iString); //junta strings
+                        strcat(caminho, ".txt");
+
+                        fileF = fopen(caminho, "r");
+
+                        if(fileF)
+                        {
+                            int k = 0;
+                            while (!feof(fileF))
+                                {
+                                    result = fgets(linha, 100, fileF);
+
+                                    if(result)
+                                    {
+                                        if(k==0)
+                                        {
+                                            printf("O nome do produto e %s", linha);
+                                            ingredienteS = linha;
+                                        }
+
+                                        if(k==1)
+                                        {
+                                            printf("A quantidade atual e de %s.", linha);
+                                            quantidadeS = atoi(linha);
+                                            printf("%d", quantidadeS);
+                                        }
+                                    }
+                                k++;
+                            }
+                        fclose(fileF);
+                        }
+                    }
+                    if(opcao == 2)
+                    {
+                        printf("");
+                    }
 
                     break;
-
-
-                case 3:
-
-
-                    break;
-
                 }
-
-                break;
 
             case 3:
                 printf("\n--------------Menu----------------\n");
@@ -266,6 +325,10 @@ int main()
                 printf("\n0 - Voltar\n");
                 printf("\nSelecione uma opcao: ");
                 scanf("%d", &opcao);
+
+
+
+
                 break;
 
             case 4:
