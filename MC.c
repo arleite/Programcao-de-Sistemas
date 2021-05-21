@@ -4,19 +4,21 @@
 
 int main()
 {
-    int a=1, b=1, opcao, letras = 0, contador, id;
+    int a=1, b=1, opcao, letras = 0, contador = 1, id;
     char nomeF[50], estatutoF[50];
     float salarioF;
     char* dirnameFuncionarios = "Funcionarios";
     char* dirnameFile = "Files";
-    char  caminho[100], contadorString[100], iString[100], result, linha[100];
+    char  caminho[100], contadorString[100], iString[100], result, linha[100], auxIngrediente[50];
 
     int quantidadeS;
-    char ingredienteS;
+    char ingredienteS[50];
+
 
     FILE *fileF;
     FILE *fileContadorFuncionario;
     FILE *fileContadorStock;
+
 
    //funções
     void contadorInteiroFuncionarios(){
@@ -24,7 +26,7 @@ int main()
         fscanf(fileContadorFuncionario, "%d", &contador);
     }
     void contadorInteiroProduto(){
-        fileContadorStock = fopen ("Files/Stock/ContadorFuncionarios.txt", "r");
+        fileContadorStock = fopen ("Files/Produtos/ContadorProdutos.txt", "r");
         fscanf(fileContadorStock, "%d", &contador);
     }
 
@@ -99,8 +101,6 @@ int main()
                     scanf("%s", &estatutoF);
                     printf("Salario: ");
                     scanf("%f", &salarioF);
-
-                    contador = 1;
 
                     if(!fileContadorFuncionario)
                     {
@@ -206,13 +206,9 @@ int main()
                         fclose(fileF);
                         }
                     }
-
-                    break;
-
-                default:
                     break;
                 }
-
+            break;
 
 
             case 2:
@@ -224,24 +220,23 @@ int main()
                 printf("\n0 - Voltar\n");
                 printf("\nSelecione uma opcao: ");
                 scanf("%d", &opcao);
+                mkdir("Files/Produtos", 0777);
 
                 switch (opcao)
                 {
                 case 1:
-                    mkdir("Files/Produtos", 0777);
-
-                    contador = 1;
-
                     printf("Ingrediente: ");
                     scanf("%s", &ingredienteS);
                     printf("Quantidade: ");
                     scanf("%d", &quantidadeS);
 
+
                     if(!fileContadorStock)
                     {
-                       fileContadorStock = fopen("Files/Produtos/ContadorProdutos.txt" ,"w");
-                       fprintf(fileContadorStock, "%d", contador);
-                       fclose(fileContadorStock);
+                        contador = 1;
+                        fileContadorStock = fopen("Files/Produtos/ContadorProdutos.txt" ,"w");
+                        fprintf(fileContadorStock, "%d", contador);
+                        fclose(fileContadorStock);
                     }
 
                     contadorInteiroProduto();
@@ -253,7 +248,7 @@ int main()
                     strcat(caminho, ".txt");
 
                     fileF = fopen(caminho, "w");
-                    fprintf(fileF, "%s\n%d", ingredienteS, quantidadeS);
+                    fprintf(fileF, "%s\n%d\n", ingredienteS, quantidadeS);
                     fclose(fileF);
 
                     printf("\nO ID do ingrediente %s e %d!", ingredienteS, contador);
@@ -287,6 +282,110 @@ int main()
                         {
                             int k = 0;
                             while (!feof(fileF))
+                            {
+                                result = fgets(linha, 100, fileF);
+                                if(result)
+                                {
+                                    if(k==0)
+                                    {
+                                        printf("O nome do produto e %s", linha);
+                                        strcpy(auxIngrediente, linha);
+                                    }
+
+                                    if(k==1)
+                                    {
+                                        printf("A quantidade atual e de %s", linha);
+                                        quantidadeS = atoi(linha);
+                                    }
+                                }
+                                k++;
+                            }
+
+                        fclose(fileF);
+                        }
+                        int quatidadeA, quantidadeTotal;
+
+                        printf("\nIntroduza o stock a acrescentar:");
+                        scanf("%d", &quatidadeA);
+
+                        quantidadeTotal = quantidadeS + quatidadeA;
+
+                        fileF = fopen(caminho, "w");
+
+                        fprintf(fileF, "%s%d", auxIngrediente, quantidadeTotal);
+
+                        fclose(fileF);
+                    }
+                    if(opcao == 2)
+                    {
+                        printf("Introduza o ID do produto a editar: \n");
+                        scanf("%d", &id);
+
+                        sprintf(iString, "%d", id);
+                        strcpy(caminho, "Files/Produtos/"); //limpar variavel, copia o segundo parametro
+                        strcat(caminho, iString); //junta strings
+                        strcat(caminho, ".txt");
+
+                        fileF = fopen(caminho, "r");
+
+                        if(fileF)
+                        {
+                            int k = 0;
+                            while (!feof(fileF))
+                            {
+                                result = fgets(linha, 100, fileF);
+                                if(result)
+                                {
+                                    if(k==0)
+                                    {
+                                        printf("O nome do produto e %s", linha);
+                                        strcpy(auxIngrediente, linha);
+                                    }
+
+                                    if(k==1)
+                                    {
+                                        printf("A quantidade atual e de %s", linha);
+                                        quantidadeS = atoi(linha);
+                                    }
+                                }
+                                k++;
+                            }
+
+                        fclose(fileF);
+                        }
+
+                        int quatidadeA, quantidadeTotal;
+
+                        printf("\nIntroduza o stock a remover:");
+                        scanf("%d", &quatidadeA);
+
+                        quantidadeTotal = quantidadeS - quatidadeA;
+
+                        fileF = fopen(caminho, "w");
+
+                        fprintf(fileF, "%s%d", auxIngrediente, quantidadeTotal);
+
+                        fclose(fileF);
+                    }
+
+                    break;
+
+                case 3:
+                    contadorInteiroProduto();
+
+                    for(int i = 1; contador > i;i++)
+                    {
+                        strcpy(caminho, "Files/Produtos/");
+                        sprintf(iString, "%d", i);
+                        strcat(iString, ".txt");
+                        strcat(caminho, iString);
+
+                        fileF = fopen(caminho, "r");
+                        //printf("\n%s", caminho); Ver caminho
+                        if(fileF)
+                        {
+                            int k = 0;
+                            while (!feof(fileF))
                                 {
                                     result = fgets(linha, 100, fileF);
 
@@ -294,15 +393,13 @@ int main()
                                     {
                                         if(k==0)
                                         {
-                                            printf("O nome do produto e %s", linha);
-                                            ingredienteS = linha;
+                                            printf("\n--------------------\n\n");
+                                            printf("Id: %d\n", i);
+                                            printf("Engrediente: %s", linha);
                                         }
-
                                         if(k==1)
                                         {
-                                            printf("A quantidade atual e de %s.", linha);
-                                            quantidadeS = atoi(linha);
-                                            printf("%d", quantidadeS);
+                                            printf("Quantidade: %s", linha);
                                         }
                                     }
                                 k++;
@@ -310,13 +407,16 @@ int main()
                         fclose(fileF);
                         }
                     }
-                    if(opcao == 2)
-                    {
-                        printf("");
-                    }
-
                     break;
+
+                case 4:
+                    printf("Qual o id do produto que pretende eliminar");
+
+
+                    printf("O produto que pretende eliminar é esse?");
+
                 }
+            break;
 
             case 3:
                 printf("\n--------------Menu----------------\n");
@@ -326,10 +426,7 @@ int main()
                 printf("\nSelecione uma opcao: ");
                 scanf("%d", &opcao);
 
-
-
-
-                break;
+            break;
 
             case 4:
                 printf("\n--------------Menu----------------\n");
@@ -339,20 +436,20 @@ int main()
                 printf("\n0 - Voltar\n");
                 printf("\nSelecione uma opcao: ");
                 scanf("%d", &opcao);
-                break;
+            break;
 
             case 5:
                 //DINHEIRO TOTAL
-                break;
+            break;
 
             case 0:
 
-                break;
+            break;
 
             default:
                 break;
             }
-            break;
+        break;
 
         case 2:
             printf("\n--------------Cliente----------------\n");
