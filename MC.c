@@ -4,7 +4,7 @@
 
 int main()
 {
-    int a=1, b=1, opcao, letras = 0, contador = 1, id;
+    int a=1, opcao, letras = 0, contador = 1, id, b=1;
     char nomeF[50], estatutoF[50];
     float salarioF;
     char* dirnameFuncionarios = "Funcionarios";
@@ -30,12 +30,11 @@ int main()
         fscanf(fileContadorStock, "%d", &contador);
     }
 
-
     while (a==1){
         mkdir(dirnameFile, 0777);
 
         printf("\n--------------Menu----------------\n");
-        printf("1 - Gestao da Empresa\n");
+        printf("\n1 - Gestao da Empresa\n");
         printf("2 - Cliente\n");
         printf("\n0 - Sair\n");
         printf("Selecione uma opcao: ");
@@ -71,12 +70,14 @@ int main()
                 printf("\nSelecione uma opcao: ");
                 scanf("%d", &opcao);
 
+                system("cls");
+
                 switch (opcao)
                 {
                 case 1:
+                    printf("Adicionar o funcionario\n");
                     printf("Nome: ");
                     scanf("%s", &nomeF);
-
                     while (b == 1) //verificar que só introduziu letras
                     {
                         for (int i = 0; nomeF[i] != '\0'; i++)
@@ -87,7 +88,7 @@ int main()
                         if (strlen(nomeF) != letras)
                         {
                             letras = 0;
-                            printf("Introduza um nome!\n");
+                            printf("Introduza apenas letras!\n");
                             printf("Nome: ");
                             scanf("%s", &nomeF);
                         }
@@ -99,6 +100,27 @@ int main()
 
                     printf("Estatuto: ");
                     scanf("%s", &estatutoF);
+                    b = 1;
+                    while (b == 1) //verificar que só introduziu letras
+                    {
+                        for (int i = 0; estatutoF[i] != '\0'; i++)
+                        {
+                            if (isalpha(estatutoF[i]))
+                                letras++;
+                        }
+                        if (strlen(estatutoF) != letras)
+                        {
+                            letras = 0;
+                            printf("Introduza apenas letras!\n");
+                            printf("Estatuto: ");
+                            scanf("%s", &estatutoF);
+                        }
+                        else
+                        {
+                            b = 0;
+                        }
+                    }
+
                     printf("Salario: ");
                     scanf("%f", &salarioF);
 
@@ -131,7 +153,8 @@ int main()
                     break;
 
                 case 2:
-                    printf("\nPressione 0 para voltar.\n");
+                    printf("Remover funcionario\n");
+                    printf("Pressione 0 para voltar.\n");
                     printf("Introduza o Id do funcionario: ");
                     scanf("%d", &id);
 
@@ -410,12 +433,59 @@ int main()
                     break;
 
                 case 4:
-                    printf("Qual o id do produto que pretende eliminar");
+                    printf("Qual o id do produto que pretende eliminar\n");
+                    scanf("%d", &id);
+
+                    sprintf(iString, "%d", id); //passar um numero inteiro para char
+                    strcpy(caminho, "Files/Produtos/"); //limpar variavel, copia o segundo parametro
+                    strcat(caminho, iString); //junta strings
+                    strcat(caminho, ".txt");
+
+                    fileF = fopen(caminho, "r");
+
+                    printf("Produto\n");
+
+                    if(fileF)
+                    {
+                        int k = 0;
+                        while (!feof(fileF))
+                        {
+                            result = fgets(linha, 100, fileF);
+                            if(result)
+                            {
+                                if(k==0)
+                                {
+                                    printf("Ingrediente: %s", linha);
+                                }
+
+                                if(k==1)
+                                {
+                                    printf("Stock: %s\n", linha);
+                                }
+                            }
+                            k++;
+                        }
+                    fclose(fileF);
+                    }
+
+                    int aux;
+
+                    printf("Tem a certeza que pretende eliminar este produto\n");
+                    printf("Sim - 1\n");
+                    printf("Nao - 2\n");
+                    scanf("%d", &aux);
+
+                    if(aux == 1)
+                    {
+                        remove(caminho);
+                    }
 
 
-                    printf("O produto que pretende eliminar é esse?");
 
                 }
+
+                break;
+
             break;
 
             case 3:
