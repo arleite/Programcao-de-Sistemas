@@ -4,20 +4,25 @@
 
 int main()
 {
-    int a=1, opcao, letras = 0, contador = 1, id, b=1;
+    int a=1, b=1, opcao, letras = 0, contador = 1, id;
     char nomeF[50], estatutoF[50];
     float salarioF;
     char* dirnameFuncionarios = "Funcionarios";
     char* dirnameFile = "Files";
+    char* dirnameClientes= "Clientes";
     char  caminho[100], contadorString[100], iString[100], result, linha[100], auxIngrediente[50];
 
     int quantidadeS;
     char ingredienteS[50];
 
+    char nomeC[50];
+    int numeroTC, nifC;
 
     FILE *fileF;
     FILE *fileContadorFuncionario;
     FILE *fileContadorStock;
+    FILE *fileContadorCliente;
+
 
 
    //funções
@@ -29,12 +34,17 @@ int main()
         fileContadorStock = fopen ("Files/Produtos/ContadorProdutos.txt", "r");
         fscanf(fileContadorStock, "%d", &contador);
     }
+    void contadorInteiroClientes(){
+        fileContadorCliente = fopen ("Files/Clientes/ContadorClientes.txt", "r");
+        fscanf(fileContadorCliente, "%d", &contador);
+    }
+
 
     while (a==1){
         mkdir(dirnameFile, 0777);
 
         printf("\n--------------Menu----------------\n");
-        printf("\n1 - Gestao da Empresa\n");
+        printf("1 - Gestao da Empresa\n");
         printf("2 - Cliente\n");
         printf("\n0 - Sair\n");
         printf("Selecione uma opcao: ");
@@ -70,14 +80,12 @@ int main()
                 printf("\nSelecione uma opcao: ");
                 scanf("%d", &opcao);
 
-                system("cls");
-
                 switch (opcao)
                 {
                 case 1:
-                    printf("Adicionar o funcionario\n");
                     printf("Nome: ");
                     scanf("%s", &nomeF);
+
                     while (b == 1) //verificar que só introduziu letras
                     {
                         for (int i = 0; nomeF[i] != '\0'; i++)
@@ -88,7 +96,7 @@ int main()
                         if (strlen(nomeF) != letras)
                         {
                             letras = 0;
-                            printf("Introduza apenas letras!\n");
+                            printf("Introduza um nome!\n");
                             printf("Nome: ");
                             scanf("%s", &nomeF);
                         }
@@ -100,27 +108,6 @@ int main()
 
                     printf("Estatuto: ");
                     scanf("%s", &estatutoF);
-                    b = 1;
-                    while (b == 1) //verificar que só introduziu letras
-                    {
-                        for (int i = 0; estatutoF[i] != '\0'; i++)
-                        {
-                            if (isalpha(estatutoF[i]))
-                                letras++;
-                        }
-                        if (strlen(estatutoF) != letras)
-                        {
-                            letras = 0;
-                            printf("Introduza apenas letras!\n");
-                            printf("Estatuto: ");
-                            scanf("%s", &estatutoF);
-                        }
-                        else
-                        {
-                            b = 0;
-                        }
-                    }
-
                     printf("Salario: ");
                     scanf("%f", &salarioF);
 
@@ -153,8 +140,7 @@ int main()
                     break;
 
                 case 2:
-                    printf("Remover funcionario\n");
-                    printf("Pressione 0 para voltar.\n");
+                    printf("\nPressione 0 para voltar.\n");
                     printf("Introduza o Id do funcionario: ");
                     scanf("%d", &id);
 
@@ -433,59 +419,12 @@ int main()
                     break;
 
                 case 4:
-                    printf("Qual o id do produto que pretende eliminar\n");
-                    scanf("%d", &id);
-
-                    sprintf(iString, "%d", id); //passar um numero inteiro para char
-                    strcpy(caminho, "Files/Produtos/"); //limpar variavel, copia o segundo parametro
-                    strcat(caminho, iString); //junta strings
-                    strcat(caminho, ".txt");
-
-                    fileF = fopen(caminho, "r");
-
-                    printf("Produto\n");
-
-                    if(fileF)
-                    {
-                        int k = 0;
-                        while (!feof(fileF))
-                        {
-                            result = fgets(linha, 100, fileF);
-                            if(result)
-                            {
-                                if(k==0)
-                                {
-                                    printf("Ingrediente: %s", linha);
-                                }
-
-                                if(k==1)
-                                {
-                                    printf("Stock: %s\n", linha);
-                                }
-                            }
-                            k++;
-                        }
-                    fclose(fileF);
-                    }
-
-                    int aux;
-
-                    printf("Tem a certeza que pretende eliminar este produto\n");
-                    printf("Sim - 1\n");
-                    printf("Nao - 2\n");
-                    scanf("%d", &aux);
-
-                    if(aux == 1)
-                    {
-                        remove(caminho);
-                    }
+                    printf("Qual o id do produto que pretende eliminar");
 
 
+                    printf("O produto que pretende eliminar é esse?");
 
                 }
-
-                break;
-
             break;
 
             case 3:
@@ -499,13 +438,136 @@ int main()
             break;
 
             case 4:
+                mkdir("Files/Clientes", 0777);
                 printf("\n--------------Menu----------------\n");
                 printf("\n1 - Adicionar cliente\n");
-                printf("2 - Remover cliente\n");
-                printf("3 - Listar clientes\n");
+                printf("2 - Listar clientes\n");
                 printf("\n0 - Voltar\n");
                 printf("\nSelecione uma opcao: ");
                 scanf("%d", &opcao);
+
+                if (opcao == 1)
+                {
+                    printf("Nome: ");
+                    scanf("%s", &nomeC);
+                    b=1;
+                    letras = 0;
+                    while (b == 1) //verificar que só introduziu letras
+                    {
+                        for (int i = 0; nomeC[i] != '\0'; i++)
+                        {
+                            if (isalpha(nomeC[i]))
+                                letras++;
+                        }
+                        if (strlen(nomeC) != letras)
+                        {
+                            letras = 0;
+                            printf("Introduza um nome!\n");
+                            printf("Nome: ");
+                            scanf("%s", &nomeC);
+                        }
+                        else
+                        {
+                            b = 0;
+                        }
+                    }
+
+                    printf("Numero de telemovel: ");
+                    scanf("%d", &numeroTC);
+                    int aux;
+                    b=1;
+                    while (b == 1) //verificar que só introduziu letras
+                    {
+                        aux = numeroTC/100000000;
+                        if (!isdigit(numeroTC) && aux > 1)
+                        {
+                            aux=0;
+                            printf("\nIntroduza um numero valido!\n");
+                            printf("%d", aux);
+                            printf("Numero de telemovel: ");
+                            scanf("%d", &numeroTC);
+                        }
+                        else
+                        {
+                            b = 0;
+                        }
+                    }
+
+                    printf("NIF: ");
+                    scanf("%d", &nifC);
+
+                    if(!fileContadorCliente)
+                    {
+                       contador = 1;
+                       fileContadorCliente = fopen("Files/Clientes/ContadorClientes.txt" ,"w");
+                       fprintf(fileContadorCliente, "%d", contador);
+                       fclose(fileContadorCliente);
+                    }
+
+                    contadorInteiroClientes(); //função para ir buscar o valor inteiro do ficheiro contador
+
+                    sprintf(contadorString, "%d",contador); //passar o valor do contador para string, ou seja, contadorString
+                    strcpy(caminho, "Files/Clientes/"); //limpar variavel, copia o segundo parametro
+                    strcat(caminho, contadorString); //junta strings
+                    strcat(caminho, ".txt");
+
+
+                    fileF = fopen(caminho, "w");
+                    fprintf(fileF, "%s\n%d\n%d\n", nomeC, numeroTC, nifC);
+                    fclose(fileF);
+
+                    printf("\nO ID do cliente %s e %d!", nomeC, contador);
+
+                    contador += 1;
+
+                    fileContadorCliente = fopen ("Files/Clientes/ContadorClientes.txt", "w");
+                    fprintf(fileContadorCliente, "%d", contador);
+                    fclose(fileContadorCliente);
+                }
+
+                if(opcao==2) //////////////////////////////////
+                {
+                    contadorInteiroClientes();
+
+                    for(int i = 1; contador > i;i++)
+                    {
+                        strcpy(caminho, "Files/Clientes/");
+                        sprintf(iString, "%d", i);
+                        strcat(iString, ".txt");
+                        strcat(caminho, iString);
+
+                        fileF = fopen(caminho, "r");
+                        //printf("\n%s", caminho); Ver caminho
+                        if(fileF)
+                        {
+                            int k = 0;
+                            while (!feof(fileF))
+                                {
+                                    result = fgets(linha, 100, fileF);
+
+                                    if(result)
+                                    {
+                                        if(k==0)
+                                        {
+                                            printf("\n--------------------\n\n");
+                                            printf("Id: %d\n", i);
+                                            printf("Nome: %s", linha);
+                                        }
+                                        if(k==1)
+                                        {
+                                            printf("Numero de telemovel: %s", linha);
+                                        }
+                                        if(k==2)
+                                        {
+                                            printf("NIF: %s", linha);
+                                        }
+                                    }
+                                k++;
+                            }
+                        fclose(fileF);
+                        }
+                    }
+                }
             break;
 
             case 5:
