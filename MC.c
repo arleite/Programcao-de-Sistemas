@@ -21,6 +21,11 @@ int main()
     FILE *fileContadorFuncionario;
     FILE *fileContadorStock;
     FILE *fileContadorCliente;
+    FILE *fileContadorPequenoAlmoco;
+    FILE *fileContadorAlmoco;
+    FILE *fileContadorLanche;
+    FILE *fileContadorJantar;
+    FILE *fileContadorSobremesa;
 
    //funções
     void contadorInteiroFuncionarios(){
@@ -30,6 +35,10 @@ int main()
     void contadorInteiroProduto(){
         fileContadorStock = fopen ("Files/Produtos/ContadorProdutos.txt", "r");
         fscanf(fileContadorStock, "%d", &contador);
+    }
+    void contadorInteiroPequenoAlmoco() {
+        fileContadorPequenoAlmoco = fopen ("Files/Ementas/PequenoAlmoco/ContadorPequenoAlmoco.txt", "r");
+        fscanf(fileContadorPequenoAlmoco, "%d", &contador);
     }
     void contadorInteiroClientes(){
         fileContadorCliente = fopen ("Files/Clientes/ContadorClientes.txt", "r");
@@ -523,12 +532,129 @@ int main()
             break;
 
             case 3:
+                mkdir("Files/Ementas", 0777);
                 printf("\n--------------Menu----------------\n");
                 printf("\n1 - Adicionar ementa\n");
                 printf("2 - Remover ementa\n");
                 printf("\n0 - Voltar\n");
                 printf("\nSelecione uma opcao: ");
                 scanf("%d", &opcao);
+
+                char ementa[50];
+                float precoEmenta;
+
+                if (opcao == 1)
+                {
+                    printf("Ementa: ");
+                    scanf("%s", ementa);
+                    printf("Preco: ");
+                    scanf("%f", &precoEmenta);
+
+                    printf("\nIntroduza qual a lista da ementa que corresponde!");
+                    printf("\n1 - Pequeno-Almoco\n");
+                    printf("2 - Almoco\n");
+                    printf("3 - Lanche\n");
+                    printf("4 - Jantar\n");
+                    printf("5 - Sobremesa\n");
+                    printf("6 - Bebida\n");
+                    printf("Opcao: ");
+                    scanf("%d", &opcao);
+
+                    if(opcao == 1)
+                    {
+                        mkdir("Files/Ementas/PequenoAlmoco", 0777);
+
+                        if(!fileContadorPequenoAlmoco)
+                        {
+                            contador = 1;
+                            fileContadorPequenoAlmoco = fopen("Files/Ementas/PequenoAlmoco/ContadorPequenoAlmoco.txt" ,"w");
+                            fprintf(fileContadorPequenoAlmoco, "%d", contador);
+                            fclose(fileContadorPequenoAlmoco);
+                        }
+
+                        contadorInteiroPequenoAlmoco(); //função para ir buscar o valor inteiro do ficheiro contador
+
+                        sprintf(contadorString, "%d",contador); //passar o valor do contador para string, ou seja, contadorString
+                        strcpy(caminho, "Files/Ementas/PequenoAlmoco/"); //limpar variavel, copia o segundo parametro
+                        strcat(caminho, contadorString); //junta strings
+                        strcat(caminho, ".txt");
+
+                        printf("Quais os produtos que constituem essa ementa?\n");
+                        ////////lista de produtos
+                        printf("Adicione por ID: ");
+                        scanf("%d", &id);
+
+                        int stock;
+                        printf("Quantidade necessaria: ");
+                        scanf("%d", &stock);
+
+                        fileF = fopen(caminho, "w");
+                        fprintf(fileF, "%s\n%.2f\n%d\n%d\n", ementa, precoEmenta, id, stock);
+                        fclose(fileF);
+
+                        b=1;
+                        while (b == 1)
+                        {
+                            printf("Esta ementa possui mais produtos?\n");
+                            printf("1 - Sim\n");
+                            printf("2 - Nao\n");
+                            scanf("%d", &opcao);
+
+                            if(opcao == 1)
+                            {
+                                printf("Quais os produtos que constituem essa ementa?\n");
+                                ////////lista de produtos
+                                printf("Adicione por ID: ");
+                                scanf("%d", &id);
+
+                                int stock;
+                                printf("Quantidade necessaria: ");
+                                scanf("%d", &stock);
+
+                                fileF = fopen(caminho, "a");
+                                fprintf(fileF, "%d\n%d\n", id, stock);
+                                fclose(fileF);
+                            }
+                            if (opcao == 2)
+                            {
+                                b = 0;
+                            }
+                        }
+
+                        contador += 1;
+
+                        fileContadorPequenoAlmoco = fopen ("Files/Ementas/PequenoAlmoco/ContadorPequenoAlmoco.txt", "w");
+                        fprintf(fileContadorPequenoAlmoco, "%d", contador);
+                        fclose(fileContadorPequenoAlmoco);
+
+                    }
+                    if(opcao == 2)
+                    {
+                        mkdir("Files/Ementa/Almoco", 0777);
+                    }
+                    if(opcao == 3)
+                    {
+                        mkdir("Files/Ementa/Lanche", 0777);
+                    }
+                    if(opcao == 4)
+                    {
+                        mkdir("Files/Ementa/Jantar", 0777);
+                    }
+                    if(opcao == 5)
+                    {
+                       mkdir("Files/Ementa/Sobremesa", 0777);
+                    }
+                    if(opcao == 6)
+                    {
+                       mkdir("Files/Ementa/Bebida", 0777);
+                    }
+
+                }
+
+                if(opcao == 2)
+                {
+
+                }
 
             break;
 
@@ -545,7 +671,6 @@ int main()
                 {
                     printf("Nome: ");
                     scanf("%s", nomeC);
-                    printf("\n%s", nomeC);
                     b=1;
                     letras = 0;
                     while (b == 1) //verificar que só introduziu letras
@@ -716,9 +841,90 @@ int main()
             printf("4 - Jantar\n");
             printf("5 - Sobremesa\n");
             printf("6 - Bebida\n");
-            printf("7 - Pagar / Anular\n");
+            printf("7 - Pagar\n");
+            printf("8 - Anular\n");
             printf("\n0 - Voltar\n");
+            printf("Selecione uma opcao: ");
             scanf("%d", &opcao);
+
+             if(opcao == 1)
+            {
+                contadorInteiroPequenoAlmoco();
+
+                for(int i = 1; contador > i;i++)
+                {
+                    strcpy(caminho, "Files/Ementas/PequenoAlmoco/");
+                    sprintf(iString, "%d", i);
+                    strcat(iString, ".txt");
+                    strcat(caminho, iString);
+
+                    fileF = fopen(caminho, "r");
+
+                    if(fileF)
+                    {
+                        int k = 0;
+                        while (!feof(fileF))
+                            {
+                                result = fgets(linha, 100, fileF);
+
+                                if(result)
+                                {
+                                    if(k==0)
+                                    {
+                                        printf("\n--------------------\n\n");
+                                        printf("%d  - %s................", i, linha); //erro, mudar
+                                    }
+                                    if(k == 1)
+                                    {
+                                        printf("%s", linha);
+                                    }
+                                }
+                                k++;
+                            }
+                        fclose(fileF);
+                    }
+
+                    id = 1;
+                    while(id!=0)
+                    {
+                        printf("0 - Voltar\n");
+                        printf("Introduza a ementa a comprar: ");
+                        scanf("%d", &id);
+
+                        char idString[50];
+
+                        sprintf(idString, "%d",id); //passar o valor do contador para string, ou seja, contadorString
+                        strcpy(caminho, "Files/Ementas/PequenoAlmoco/"); //limpar variavel, copia o segundo parametro
+                        strcat(caminho, idString); //junta strings
+                        strcat(caminho, ".txt");
+
+                        fileF = fopen(caminho, "r");
+                        fclose(fileF);
+
+                       if(fileF)
+                       {
+                            mkdir("Files/Pedidos", 0777);
+
+                            fileF = fopen("Files/Pedidos/PequenoAlmoco.txt", "a");
+
+                            fprintf(fileF, "%d\n", id);
+
+                            fclose(fileF);
+                       }
+                       else if(id == 0)
+                       else
+                       {
+                           printf("Introduza uma ementa valida!");
+                       }
+
+                   }
+                }
+            }
+
+            if(opcao == 7)
+            {
+
+            }
 
             break;
 
