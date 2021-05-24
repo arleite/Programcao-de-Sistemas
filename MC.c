@@ -5,8 +5,7 @@
 int main()
 {
     int a=1, opcao, letras = 0, contador = 1, id, b=1;
-    char nomeF[50], estatutoF[50];
-    float salarioF;
+    char nomeF[50], estatutoF[50], salarioF[50];
     char* dirnameFuncionarios = "Funcionarios";
     char* dirnameFile = "Files";
     char* dirnameClientes= "Clientes";
@@ -15,8 +14,8 @@ int main()
     int quantidadeS;
     char ingredienteS[50];
 
-    char nomeC[50];
-    int numeroTC, nifC;
+    int aux;
+    char nomeC[50], numeroTC[50], nifC[50];
 
     FILE *fileF;
     FILE *fileContadorFuncionario;
@@ -133,7 +132,31 @@ int main()
                     }
 
                     printf("Salario: ");
-                    scanf("%f", &salarioF);
+                    scanf("%s", &salarioF);
+
+                    b=1;
+                    while (b == 1) //verificar que só introduziu letras
+                    {
+                        letras=0;
+                        for (int i=0; salarioF[i] != '\0'; i++)
+                        {
+                            if(isdigit(salarioF[i]))
+                                letras++;
+                        }
+                        aux = strlen(salarioF);
+                        if (strlen(salarioF) != letras && strlen(salarioF) != letras+1)
+                        {
+                            printf("%d, %d", letras, aux);
+                            printf("\nIntroduza um numero valido!\n");
+                            printf("Salario: ");
+                            scanf("%s", salarioF);
+                        }
+                        else
+                        {
+                            b = 0;
+                        }
+                    }
+
 
                     if(!fileContadorFuncionario)
                     {
@@ -150,7 +173,7 @@ int main()
                     strcat(caminho, ".txt");
 
                     fileF = fopen(caminho, "w");
-                    fprintf(fileF, "%s\n%s\n%.2f\n", nomeF, estatutoF, salarioF);
+                    fprintf(fileF, "%s\n%s\n%s\n", nomeF, estatutoF, salarioF);
                     fclose(fileF);
 
                     printf("\nO ID do funcionario %s e %d!", nomeF, contador);
@@ -521,8 +544,8 @@ int main()
                 if (opcao == 1)
                 {
                     printf("Nome: ");
-                    scanf("%s", &nomeC);
-
+                    scanf("%s", nomeC);
+                    printf("\n%s", nomeC);
                     b=1;
                     letras = 0;
                     while (b == 1) //verificar que só introduziu letras
@@ -537,7 +560,7 @@ int main()
                             letras = 0;
                             printf("Introduza apenas letras!\n");
                             printf("Nome: ");
-                            scanf("%s", &nomeC);
+                            scanf("%s", nomeC);
                         }
                         else
                         {
@@ -546,10 +569,56 @@ int main()
                     }
 
                     printf("Numero de telemovel: ");
-                    scanf("%d", &numeroTC);
+                    scanf("%s", numeroTC);
+
+                    b=1;
+                    while (b == 1) //verificar que só introduziu letras
+                    {
+                        letras=0;
+                        aux = atoi(numeroTC);
+                        for (int i=0; numeroTC[i] != '\0'; i++)
+                        {
+                            if(isdigit(numeroTC[i]))
+                                letras++;
+                        }
+
+                        if (strlen(numeroTC) != letras || aux/100000000 < 9)
+                        {
+                            printf("\nIntroduza um numero valido!\n");
+                            printf("Numero de telemovel: ");
+                            scanf("%s", numeroTC);
+                        }
+                        else
+                        {
+                            b = 0;
+                        }
+                    }
 
                     printf("NIF: ");
-                    scanf("%d", &nifC);
+                    scanf("%s", nifC);
+
+                    b=1;
+                    while (b == 1) //verificar que só introduziu letras
+                    {
+                        letras=0;
+                        aux = atoi(nifC);
+                        for (int i=0; nifC[i] != '\0'; i++)
+                        {
+                            if(isdigit(nifC[i]))
+                                letras++;
+                        }
+
+                        if (strlen(nifC) != letras || aux/100000000 < 1)
+                        {
+                            printf("\nIntroduza um numero valido!\n");
+                            printf("NIF: ");
+                            scanf("%s", nifC);
+                        }
+                        else
+                        {
+                            b = 0;
+                        }
+                    }
 
                     if(!fileContadorCliente)
                     {
@@ -568,7 +637,7 @@ int main()
 
 
                     fileF = fopen(caminho, "w");
-                    fprintf(fileF, "%s\n%d\n%d\n", nomeC, numeroTC, nifC);
+                    fprintf(fileF, "%s\n%s\n%s\n", nomeC, numeroTC, nifC);
                     fclose(fileF);
 
                     printf("\nO ID do cliente %s e %d!", nomeC, contador);
