@@ -883,7 +883,7 @@ int main()
                             }
                         fclose(fileF);
                     }
-
+                }
                     id = 1;
                     while(id!=0)
                     {
@@ -911,19 +911,50 @@ int main()
 
                             fclose(fileF);
                        }
-                       else if(id == 0)
+                       else if(id == 0){}
                        else
                        {
                            printf("Introduza uma ementa valida!");
                        }
 
                    }
-                }
+
             }
 
             if(opcao == 7)
             {
+                int aux = 0;
+                printf("Deseja fatura?\n");
+                printf("1 - Sim\n");
+                printf("2 - Nao\n");
+                printf("0 - Voltar");
 
+                printf("Selecione uma opcao: ");
+                scanf("%d", aux);
+
+                if(aux == 1)
+                {
+                    printf("F A T U R A   S I M P L I F I C A D A\n");
+                    printf("Funcionarios 04/06/21 Andre Leite - Tiago Rangel");
+                    printf("Itens");
+                    //Listar o pedido
+
+
+                    printf("Total (com IVA)");
+                    printf("Valor do IVA (23%)");
+                    printf("Obrigado pela sua visita, volte sempre!");
+
+                    scanf("");
+                }
+                else if(aux == 2)
+                {
+                    printf("Valor a pagar é de: ");
+                    printf("Obrigado pela sua visita, volte sempre!");
+                }
+                else
+                {
+                    printf("Imprima um valor correspondente!");
+                }
             }
 
             break;
