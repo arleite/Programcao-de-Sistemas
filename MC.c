@@ -26,6 +26,7 @@ int main()
     FILE *fileContadorLanche;
     FILE *fileContadorJantar;
     FILE *fileContadorSobremesa;
+    FILE *fileContadorBebida;
 
    //funções
     void contadorInteiroFuncionarios(){
@@ -1010,6 +1011,7 @@ int main()
                        }
                     }
             }
+
             if (opcao  == 3) //////////////////////////////////////////////////////
             {
             contadorInteiroLanche();
@@ -1153,6 +1155,7 @@ int main()
                        }
                     }
             }
+
             if (opcao  == 5) //////////////////////////////////////////////////////
             {
             contadorInteiroSobremesa();
@@ -1224,6 +1227,7 @@ int main()
                        }
                     }
             }
+
             if (opcao  == 6) //////////////////////////////////////////////////////
             {
             contadorInteiroBebida();
@@ -1342,5 +1346,6 @@ int main()
             break;
         }
 
+    }
     }
 }
