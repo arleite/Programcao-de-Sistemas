@@ -28,7 +28,7 @@ int main()
     FILE *fileContadorSobremesa;
     FILE *fileContadorBebida;
 
-   //funÃ§Ãµes
+   //funções
     void contadorInteiroFuncionarios(){
         fileContadorFuncionario = fopen ("Files/Funcionarios/ContadorFuncionarios.txt", "r");
         fscanf(fileContadorFuncionario, "%d", &contador);
@@ -116,7 +116,7 @@ int main()
                     printf("Nome: ");
                     scanf("%s", &nomeF);
 
-                    while (b == 1) //verificar que sÃ³ introduziu letras
+                    while (b == 1) //verificar que só introduziu letras
                     {
                         for (int i = 0; nomeF[i] != '\0'; i++)
                         {
@@ -140,7 +140,7 @@ int main()
                     printf("Estatuto: ");
                     scanf("%s", &estatutoF);
                     b = 1;
-                    while (b == 1) //verificar que sÃ³ introduziu letras
+                    while (b == 1) //verificar que só introduziu letras
                     {
                         for (int i = 0; estatutoF[i] != '\0'; i++)
                         {
@@ -165,7 +165,7 @@ int main()
                     scanf("%s", &salarioF);
 
                     b=1;
-                    while (b == 1) //verificar que sÃ³ introduziu letras
+                    while (b == 1) //verificar que só introduziu letras
                     {
                         letras=0;
                         for (int i=0; salarioF[i] != '\0'; i++)
@@ -195,7 +195,7 @@ int main()
                        fclose(fileContadorFuncionario);
                     }
 
-                    contadorInteiroFuncionarios(); //funÃ§Ã£o para ir buscar o valor inteiro do ficheiro contador
+                    contadorInteiroFuncionarios(); //função para ir buscar o valor inteiro do ficheiro contador
 
                     sprintf(contadorString, "%d",contador); //passar o valor do contador para string, ou seja, contadorString
                     strcpy(caminho, "Files/Funcionarios/"); //limpar variavel, copia o segundo parametro
@@ -593,7 +593,7 @@ int main()
                             fclose(fileContadorPequenoAlmoco);
                         }
 
-                        contadorInteiroPequenoAlmoco(); //funÃ§Ã£o para ir buscar o valor inteiro do ficheiro contador
+                        contadorInteiroPequenoAlmoco(); //função para ir buscar o valor inteiro do ficheiro contador
 
                         sprintf(contadorString, "%d",contador); //passar o valor do contador para string, ou seja, contadorString
                         strcpy(caminho, "Files/Ementas/PequenoAlmoco/"); //limpar variavel, copia o segundo parametro
@@ -694,7 +694,7 @@ int main()
                     scanf("%s", nomeC);
                     b=1;
                     letras = 0;
-                    while (b == 1) //verificar que sÃ³ introduziu letras
+                    while (b == 1) //verificar que só introduziu letras
                     {
                         for (int i = 0; nomeC[i] != '\0'; i++)
                         {
@@ -718,7 +718,7 @@ int main()
                     scanf("%s", numeroTC);
 
                     b=1;
-                    while (b == 1) //verificar que sÃ³ introduziu letras
+                    while (b == 1) //verificar que só introduziu letras
                     {
                         letras=0;
                         aux = atoi(numeroTC);
@@ -744,7 +744,7 @@ int main()
                     scanf("%s", nifC);
 
                     b=1;
-                    while (b == 1) //verificar que sÃ³ introduziu letras
+                    while (b == 1) //verificar que só introduziu letras
                     {
                         letras=0;
                         aux = atoi(nifC);
@@ -774,7 +774,7 @@ int main()
                        fclose(fileContadorCliente);
                     }
 
-                    contadorInteiroClientes(); //funÃ§Ã£o para ir buscar o valor inteiro do ficheiro contador
+                    contadorInteiroClientes(); //função para ir buscar o valor inteiro do ficheiro contador
 
                     sprintf(contadorString, "%d",contador); //passar o valor do contador para string, ou seja, contadorString
                     strcpy(caminho, "Files/Clientes/"); //limpar variavel, copia o segundo parametro
@@ -867,7 +867,7 @@ int main()
             printf("\n0 - Voltar\n");
             printf("Selecione uma opcao: ");
             scanf("%d", &opcao);
-
+            printf("\n-------------------------------\n");
              if(opcao == 1)
             {
                 contadorInteiroPequenoAlmoco();
@@ -880,7 +880,6 @@ int main()
                     strcat(caminho, iString);
 
                     fileF = fopen(caminho, "r");
-
                     if(fileF)
                     {
                         int k = 0;
@@ -888,20 +887,22 @@ int main()
                             {
                                 result = fgets(linha, 100, fileF);
 
+                                linha[strcspn(linha, "\n")] = 0; // remover o \n da string linha
+
                                 if(result)
                                 {
                                     if(k==0)
                                     {
-                                        printf("\n--------------------\n\n");
-                                        printf("%d  - %s................", i, linha); //erro, mudar
+                                        printf("%d - %s................", i, linha); //erro, mudar
                                     }
                                     if(k == 1)
                                     {
-                                        printf("%s", linha);
+                                        printf("%s\n", linha);
                                     }
                                 }
                                 k++;
                             }
+
                         fclose(fileF);
                     }
                 }
@@ -939,6 +940,7 @@ int main()
                        }
 
                    }
+            }
 
             if (opcao  == 2) //////////////////////////////////////////////////////
             {
@@ -960,16 +962,17 @@ int main()
                             {
                                 result = fgets(linha, 100, fileF);
 
+                                linha[strcspn(linha, "\n")] = 0; // remover o \n da string linha
+
                                 if(result)
                                 {
                                     if(k==0)
                                     {
-                                        printf("\n--------------------\n\n");
-                                        printf("%d  - %s................", i, linha); //erro, mudar
+                                        printf("%d - %s................", i, linha); //erro, mudar
                                     }
                                     if(k == 1)
                                     {
-                                        printf("%s", linha);
+                                        printf("%s\n", linha);
                                     }
                                 }
                                 k++;
@@ -1032,16 +1035,17 @@ int main()
                             {
                                 result = fgets(linha, 100, fileF);
 
+                                linha[strcspn(linha, "\n")] = 0; // remover o \n da string linha
+
                                 if(result)
                                 {
                                     if(k==0)
                                     {
-                                        printf("\n--------------------\n\n");
-                                        printf("%d  - %s................", i, linha); //erro, mudar
+                                        printf("%d - %s................", i, linha); //erro, mudar
                                     }
                                     if(k == 1)
                                     {
-                                        printf("%s", linha);
+                                        printf("%s\n", linha);
                                     }
                                 }
                                 k++;
@@ -1104,16 +1108,17 @@ int main()
                             {
                                 result = fgets(linha, 100, fileF);
 
+                                linha[strcspn(linha, "\n")] = 0; // remover o \n da string linha
+
                                 if(result)
                                 {
                                     if(k==0)
                                     {
-                                        printf("\n--------------------\n\n");
-                                        printf("%d  - %s................", i, linha); //erro, mudar
+                                        printf("%d - %s................", i, linha); //erro, mudar
                                     }
                                     if(k == 1)
                                     {
-                                        printf("%s", linha);
+                                        printf("%s\n", linha);
                                     }
                                 }
                                 k++;
@@ -1176,16 +1181,17 @@ int main()
                             {
                                 result = fgets(linha, 100, fileF);
 
+                                linha[strcspn(linha, "\n")] = 0; // remover o \n da string linha
+
                                 if(result)
                                 {
                                     if(k==0)
                                     {
-                                        printf("\n--------------------\n\n");
-                                        printf("%d  - %s................", i, linha); //erro, mudar
+                                        printf("%d - %s................", i, linha); //erro, mudar
                                     }
                                     if(k == 1)
                                     {
-                                        printf("%s", linha);
+                                        printf("%s\n", linha);
                                     }
                                 }
                                 k++;
@@ -1248,16 +1254,17 @@ int main()
                             {
                                 result = fgets(linha, 100, fileF);
 
+                                linha[strcspn(linha, "\n")] = 0; // remover o \n da string linha
+
                                 if(result)
                                 {
                                     if(k==0)
                                     {
-                                        printf("\n--------------------\n\n");
-                                        printf("%d  - %s................", i, linha); //erro, mudar
+                                        printf("%d - %s................", i, linha); //erro, mudar
                                     }
                                     if(k == 1)
                                     {
-                                        printf("%s", linha);
+                                        printf("%s\n", linha);
                                     }
                                 }
                                 k++;
@@ -1327,7 +1334,7 @@ int main()
                 }
                 else if(aux == 2)
                 {
-                    printf("Valor a pagar Ã© de: ");
+                    printf("Valor a pagar é de: ");
                     printf("Obrigado pela sua visita, volte sempre!");
                 }
                 else
@@ -1346,6 +1353,5 @@ int main()
             break;
         }
 
-    }
     }
 }
