@@ -272,8 +272,8 @@ int main()
                                 {
                                     result = fgets(linha, 100, fileF);
 
-                                    if(result)
-                                    {
+                                    //if(result)
+                                    //{
                                         if(k==0)
                                         {
                                             printf("\n--------------------\n\n");
@@ -288,7 +288,7 @@ int main()
                                         {
                                             printf("Salario: %s", linha);
                                         }
-                                    }
+                                    //}
                                 k++;
                             }
                         fclose(fileF);
@@ -371,8 +371,8 @@ int main()
                             while (!feof(fileF))
                             {
                                 result = fgets(linha, 100, fileF);
-                                if(result)
-                                {
+                                //if(result)
+                                //{
                                     if(k==0)
                                     {
                                         printf("O nome do produto e %s", linha);
@@ -384,7 +384,7 @@ int main()
                                         printf("A quantidade atual e de %s", linha);
                                         quantidadeS = atoi(linha);
                                     }
-                                }
+                                //}
                                 k++;
                             }
 
@@ -421,8 +421,8 @@ int main()
                             while (!feof(fileF))
                             {
                                 result = fgets(linha, 100, fileF);
-                                if(result)
-                                {
+                                //if(result)
+                                //{
                                     if(k==0)
                                     {
                                         printf("O nome do produto e %s", linha);
@@ -434,7 +434,7 @@ int main()
                                         printf("A quantidade atual e de %s", linha);
                                         quantidadeS = atoi(linha);
                                     }
-                                }
+                                //}
                                 k++;
                             }
 
@@ -476,8 +476,8 @@ int main()
                                 {
                                     result = fgets(linha, 100, fileF);
 
-                                    if(result)
-                                    {
+                                    //if(result)
+                                    //{
                                         if(k==0)
                                         {
                                             printf("\n--------------------\n\n");
@@ -488,7 +488,7 @@ int main()
                                         {
                                             printf("Quantidade: %s", linha);
                                         }
-                                    }
+                                   // }
                                 k++;
                             }
                         fclose(fileF);
@@ -515,8 +515,8 @@ int main()
                         while (!feof(fileF))
                         {
                             result = fgets(linha, 100, fileF);
-                            if(result)
-                            {
+                            //if(result)
+                            //{
                                 if(k==0)
                                 {
                                     printf("Ingrediente: %s", linha);
@@ -526,7 +526,7 @@ int main()
                                 {
                                     printf("Stock: %s\n", linha);
                                 }
-                            }
+                            //}
                             k++;
                         }
                     fclose(fileF);
@@ -550,7 +550,7 @@ int main()
 
             case 3:
                 mkdir("Files/Ementas", 0777);
-                printf("\n--------------Menu----------------\n");
+                printf("\n--------------Ementa----------------\n");
                 printf("\n1 - Adicionar ementa\n");
                 printf("2 - Remover ementa\n");
                 printf("3 - Listar ementa\n");
@@ -565,8 +565,8 @@ int main()
 
                 if (opcao == 1)
                 {
-
-                    printf("Ementa: ");
+                    printf("--------------Adicionar Ementa--------------\n");
+                    printf("\nEmenta: ");
                     scanf("%s", ementa);
                     printf("Preco: ");
                     scanf("%f", &precoEmenta);
@@ -624,8 +624,8 @@ int main()
                                 {
                                         result = fgets(linha, 100, fileF);
 
-                                        if(result)
-                                        {
+                                        //if(result)
+                                        //{
                                             if(k==0)
                                             {
                                                 printf("--------------------\n");
@@ -636,7 +636,7 @@ int main()
                                             {
                                                 printf("Quantidade: %s", linha);
                                             }
-                                        }
+                                        //}
                                     k++;
                                 }
                             fclose(fileF);
@@ -756,8 +756,8 @@ int main()
                                     {
                                         result = fgets(linha, 100, fileF);
 
-                                        if(result)
-                                        {
+                                        //if(result)
+                                        //{
                                             if(k==0)
                                             {
                                                 printf("--------------------\n");
@@ -768,7 +768,7 @@ int main()
                                             {
                                                 printf("Quantidade: %s", linha);
                                             }
-                                        }
+                                        //}
                                     k++;
                                 }
                             fclose(fileF);
@@ -889,8 +889,8 @@ int main()
                                     {
                                         result = fgets(linha, 100, fileF);
 
-                                        if(result)
-                                        {
+                                        //if(result)
+                                        //{
                                             if(k==0)
                                             {
                                                 printf("--------------------\n");
@@ -901,7 +901,7 @@ int main()
                                             {
                                                 printf("Quantidade: %s", linha);
                                             }
-                                        }
+                                        //}
                                     k++;
                                 }
                             fclose(fileF);
@@ -1021,8 +1021,8 @@ int main()
                                     {
                                         result = fgets(linha, 100, fileF);
 
-                                        if(result)
-                                        {
+                                        //if(result)
+                                        //{
                                             if(k==0)
                                             {
                                                 printf("--------------------\n");
@@ -1033,7 +1033,7 @@ int main()
                                             {
                                                 printf("Quantidade: %s", linha);
                                             }
-                                        }
+                                        //}
                                     k++;
                                 }
                             fclose(fileF);
@@ -1152,8 +1152,8 @@ int main()
                                     {
                                         result = fgets(linha, 100, fileF);
 
-                                        if(result)
-                                        {
+                                        //if(result)
+                                        //{
                                             if(k==0)
                                             {
                                                 printf("--------------------\n");
@@ -1164,7 +1164,7 @@ int main()
                                             {
                                                 printf("Quantidade: %s", linha);
                                             }
-                                        }
+                                        //}
                                     k++;
                                 }
                             fclose(fileF);
@@ -1284,8 +1284,8 @@ int main()
                                     {
                                         result = fgets(linha, 100, fileF);
 
-                                        if(result)
-                                        {
+                                        //if(result)
+                                        //{
                                             if(k==0)
                                             {
                                                 printf("--------------------\n");
@@ -1296,7 +1296,7 @@ int main()
                                             {
                                                 printf("Quantidade: %s", linha);
                                             }
-                                        }
+                                        //}
                                     k++;
                                 }
                             fclose(fileF);
@@ -1384,12 +1384,7 @@ int main()
 
                 if(opcao == 2)
                 {
-
-                }
-
-                if(opcao == 3)
-                {
-                    system("cls");
+                    printf("--------------Eliminar Ementas--------------\n");
                     printf("\nLista de Refeicoes");
                     printf("\n------------------------");
                     printf("\n1 - Pequeno-Almoco\n");
@@ -1405,7 +1400,35 @@ int main()
 
                     system("cls");
 
-                    if(opcao = 1)
+                    printf("--------------Eliminar--------------\n");
+                    if(opcao == 1)
+                    {
+                        printf("Sou aleijado ainda não faço nada");
+                    }
+                }
+
+                if(opcao == 3)
+                {
+                    printf("--------------Listar Ementas--------------\n");
+                    printf("\nLista de Refeicoes");
+                    printf("\n------------------------");
+                    printf("\n1 - Pequeno-Almoco\n");
+                    printf("2 - Almoco\n");
+                    printf("3 - Lanche\n");
+                    printf("4 - Jantar\n");
+                    printf("5 - Sobremesa\n");
+                    printf("6 - Bebida\n");
+                    printf("------------------------\n");
+                    printf("\nIntroduza qual a lista de refeicoes a que corresponde!\n");
+                    printf("Opcao: ");
+                    scanf("%d", &aux);
+
+                    system("cls");
+
+                    printf("--------------Ementas--------------\n");
+                    printf("\nLista de ementas\n");
+
+                    if(aux == 1)
                     {
                         contadorInteiroPequenoAlmoco();
 
@@ -1422,62 +1445,446 @@ int main()
                             {
                                 int k = 0;
                                 while (!feof(fileF))
-                                    {
-                                        result = fgets(linha, 100, fileF);
+                                {
+                                    result = fgets(linha, 100, fileF);
 
-                                        if(result)
+                                    //if(result)
+                                    //{
+                                        if(k==0)
                                         {
-                                            if(k==0)
-                                            {
-                                                printf("--------------------\n");
-                                                printf("Id: %d\n", i);
-                                                printf("Nome: %s", linha);
-                                            }
-                                            if(k==1)
-                                            {
-                                                printf("Preco: %s", linha);
-                                            }
-                                            if(k>1 && k%2==0)
-                                            {
-                                                strcpy(caminho, "Files/Produtos/");
-                                                linha[strcspn(linha, "\n")] = 0;
-                                                strcat(caminho, linha);
-                                                strcat(caminho, ".txt");
+                                            printf("------------------------\n");
+                                            printf("Id: %d\n", i);
+                                            printf("Nome: %s", linha);
+                                        }
+                                        if(k==1)
+                                        {
+                                            printf("Preco: %s", linha);
+                                        }
+                                        if(k>1 && k%2==0)
+                                        {
+                                            strcpy(caminho, "Files/Produtos/");
+                                            linha[strcspn(linha, "\n")] = 0;
+                                            strcat(caminho, linha);
+                                            strcat(caminho, ".txt");
 
-                                                fileF2 = fopen(caminho, "r");
+                                            fileF2 = fopen(caminho, "r");
 
-                                                if(fileF2)
+                                            if(fileF2)
+                                            {
+                                                int k = 0;
+                                                while (!feof(fileF2))
                                                 {
-                                                    int k = 0;
-                                                    while (!feof(fileF2))
-                                                    {
-                                                        result = fgets(linha, 100, fileF2);
+                                                    result = fgets(linha, 100, fileF2);
 
-                                                        if(result)
+                                                    if(result)
+                                                    {
+                                                        if(k==0)
                                                         {
-                                                            if(k==0)
-                                                            {
-                                                                 printf("Produto associado: %s", linha);
-                                                                 break;
-                                                            }
+                                                             printf("Produto associado: %s", linha);
+                                                             fclose(fileF2);
+                                                             break;
                                                         }
                                                     }
                                                 }
-                                                fclose(fileF2);
-                                            }
-                                            if(k>2 && k%2==1)
-                                            {
-                                                printf("Quantidade necessaria: %s", linha);
                                             }
                                         }
-                                    k++;
+                                        if(k>2 && k%2==1)
+                                        {
+                                            printf("Quantidade necessaria: %s", linha);
+                                        }
+
+                                    //}
+                                k++;
                                 }
                             fclose(fileF);
                             }
                         }
-
+                        printf("------------------------\n");
+                        sleep(3);
 
                     }
+                    else if(aux == 2)
+                    {
+                        contadorInteiroAlmoco();
+
+                        for(int i = 1; contador > i;i++)
+                        {
+                            strcpy(caminho, "Files/Ementas/Almoco/");
+                            sprintf(iString, "%d", i);
+                            strcat(iString, ".txt");
+                            strcat(caminho, iString);
+
+                            fileF = fopen(caminho, "r");
+
+                            if(fileF)
+                            {
+                                int k = 0;
+                                while (!feof(fileF))
+                                {
+                                    result = fgets(linha, 100, fileF);
+
+                                    //if(result)
+                                    //{
+                                        if(k==0)
+                                        {
+                                            printf("------------------------\n");
+                                            printf("Id: %d\n", i);
+                                            printf("Nome: %s", linha);
+                                        }
+                                        if(k==1)
+                                        {
+                                            printf("Preco: %s", linha);
+                                        }
+                                        if(k>1 && k%2==0)
+                                        {
+                                            strcpy(caminho, "Files/Produtos/");
+                                            linha[strcspn(linha, "\n")] = 0;
+                                            strcat(caminho, linha);
+                                            strcat(caminho, ".txt");
+
+                                            fileF2 = fopen(caminho, "r");
+
+                                            if(fileF2)
+                                            {
+                                                int k = 0;
+                                                while (!feof(fileF2))
+                                                {
+                                                    result = fgets(linha, 100, fileF2);
+
+                                                    if(result)
+                                                    {
+                                                        if(k==0)
+                                                        {
+                                                             printf("Produto associado: %s", linha);
+                                                             fclose(fileF2);
+                                                             break;
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                        }
+                                        if(k>2 && k%2==1)
+                                        {
+                                            printf("Quantidade necessaria: %s", linha);
+                                        }
+
+                                   // }
+                                k++;
+                                }
+                            fclose(fileF);
+                            }
+                        }
+                        printf("------------------------\n");
+                        sleep(3);
+
+                    }
+
+                    else if(aux == 3)
+                    {
+                        contadorInteiroLanche();
+
+                        for(int i = 1; contador > i;i++)
+                        {
+                            strcpy(caminho, "Files/Ementas/Lanche/");
+                            sprintf(iString, "%d", i);
+                            strcat(iString, ".txt");
+                            strcat(caminho, iString);
+
+                            fileF = fopen(caminho, "r");
+
+                            if(fileF)
+                            {
+                                int k = 0;
+                                while (!feof(fileF))
+                                {
+                                    result = fgets(linha, 100, fileF);
+
+                                    //if(result)
+                                    //{
+                                        if(k==0)
+                                        {
+                                            printf("------------------------\n");
+                                            printf("Id: %d\n", i);
+                                            printf("Nome: %s", linha);
+                                        }
+                                        if(k==1)
+                                        {
+                                            printf("Preco: %s", linha);
+                                        }
+                                        if(k>1 && k%2==0)
+                                        {
+                                            strcpy(caminho, "Files/Produtos/");
+                                            linha[strcspn(linha, "\n")] = 0;
+                                            strcat(caminho, linha);
+                                            strcat(caminho, ".txt");
+
+                                            fileF2 = fopen(caminho, "r");
+
+                                            if(fileF2)
+                                            {
+                                                int k = 0;
+                                                while (!feof(fileF2))
+                                                {
+                                                    result = fgets(linha, 100, fileF2);
+
+                                                    if(result)
+                                                    {
+                                                        if(k==0)
+                                                        {
+                                                             printf("Produto associado: %s", linha);
+                                                             fclose(fileF2);
+                                                             break;
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                        }
+                                        if(k>2 && k%2==1)
+                                        {
+                                            printf("Quantidade necessaria: %s", linha);
+                                        }
+
+                                    //}
+                                k++;
+                                }
+                            fclose(fileF);
+                            }
+                        }
+                        printf("------------------------\n");
+                        sleep(3);
+
+                    }
+                    else if(aux == 4)
+                    {
+                        contadorInteiroJantar();
+
+                        for(int i = 1; contador > i;i++)
+                        {
+                            strcpy(caminho, "Files/Ementas/Jantar/");
+                            sprintf(iString, "%d", i);
+                            strcat(iString, ".txt");
+                            strcat(caminho, iString);
+
+                            fileF = fopen(caminho, "r");
+
+                            if(fileF)
+                            {
+                                int k = 0;
+                                while (!feof(fileF))
+                                {
+                                    result = fgets(linha, 100, fileF);
+
+                                    //if(result)
+                                    //{
+                                        if(k==0)
+                                        {
+                                            printf("------------------------\n");
+                                            printf("Id: %d\n", i);
+                                            printf("Nome: %s", linha);
+                                        }
+                                        if(k==1)
+                                        {
+                                            printf("Preco: %s", linha);
+                                        }
+                                        if(k>1 && k%2==0)
+                                        {
+                                            strcpy(caminho, "Files/Produtos/");
+                                            linha[strcspn(linha, "\n")] = 0;
+                                            strcat(caminho, linha);
+                                            strcat(caminho, ".txt");
+
+                                            fileF2 = fopen(caminho, "r");
+
+                                            if(fileF2)
+                                            {
+                                                int k = 0;
+                                                while (!feof(fileF2))
+                                                {
+                                                    result = fgets(linha, 100, fileF2);
+
+                                                    if(result)
+                                                    {
+                                                        if(k==0)
+                                                        {
+                                                             printf("Produto associado: %s", linha);
+                                                             fclose(fileF2);
+                                                             break;
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                        }
+                                        if(k>2 && k%2==1)
+                                        {
+                                            printf("Quantidade necessaria: %s", linha);
+                                        }
+
+                                    //}
+                                k++;
+                                }
+                            fclose(fileF);
+                            }
+                        }
+                        printf("------------------------\n");
+                        sleep(3);
+                    }
+
+                    else if(aux == 5)
+                    {
+                        contadorInteiroSobremesa();
+
+                        for(int i = 1; contador > i;i++)
+                        {
+                            strcpy(caminho, "Files/Ementas/Sobremesa/");
+                            sprintf(iString, "%d", i);
+                            strcat(iString, ".txt");
+                            strcat(caminho, iString);
+
+                            fileF = fopen(caminho, "r");
+
+                            if(fileF)
+                            {
+                                int k = 0;
+                                while (!feof(fileF))
+                                {
+                                    result = fgets(linha, 100, fileF);
+
+                                    //if(result)
+                                    //{
+                                        if(k==0)
+                                        {
+                                            printf("------------------------\n");
+                                            printf("Id: %d\n", i);
+                                            printf("Nome: %s", linha);
+                                        }
+                                        if(k==1)
+                                        {
+                                            printf("Preco: %s", linha);
+                                        }
+                                        if(k>1 && k%2==0)
+                                        {
+                                            strcpy(caminho, "Files/Produtos/");
+                                            linha[strcspn(linha, "\n")] = 0;
+                                            strcat(caminho, linha);
+                                            strcat(caminho, ".txt");
+
+                                            fileF2 = fopen(caminho, "r");
+
+                                            if(fileF2)
+                                            {
+                                                int k = 0;
+                                                while (!feof(fileF2))
+                                                {
+                                                    result = fgets(linha, 100, fileF2);
+
+                                                    if(result)
+                                                    {
+                                                        if(k==0)
+                                                        {
+                                                             printf("Produto associado: %s", linha);
+                                                             fclose(fileF2);
+                                                             break;
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                        }
+                                        if(k>2 && k%2==1)
+                                        {
+                                            printf("Quantidade necessaria: %s", linha);
+                                        }
+
+                                    //}
+                                k++;
+                                }
+                            fclose(fileF);
+                            }
+                        }
+                        printf("------------------------\n");
+                        sleep(3);
+
+                    }
+
+                    else if(aux == 6)
+                    {
+                        contadorInteiroBebida();
+
+                        for(int i = 1; contador > i;i++)
+                        {
+                            strcpy(caminho, "Files/Ementas/Bebida/");
+                            sprintf(iString, "%d", i);
+                            strcat(iString, ".txt");
+                            strcat(caminho, iString);
+
+                            fileF = fopen(caminho, "r");
+
+                            if(fileF)
+                            {
+                                int k = 0;
+                                while (!feof(fileF))
+                                {
+                                    result = fgets(linha, 100, fileF);
+
+                                    //if(result)
+                                    //{
+                                        if(k==0)
+                                        {
+                                            printf("------------------------\n");
+                                            printf("Id: %d\n", i);
+                                            printf("Nome: %s", linha);
+                                        }
+                                        if(k==1)
+                                        {
+                                            printf("Preco: %s", linha);
+                                        }
+                                        if(k>1 && k%2==0)
+                                        {
+                                            strcpy(caminho, "Files/Produtos/");
+                                            linha[strcspn(linha, "\n")] = 0;
+                                            strcat(caminho, linha);
+                                            strcat(caminho, ".txt");
+
+                                            fileF2 = fopen(caminho, "r");
+
+                                            if(fileF2)
+                                            {
+                                                int k = 0;
+                                                while (!feof(fileF2))
+                                                {
+                                                    result = fgets(linha, 100, fileF2);
+
+                                                    if(result)
+                                                    {
+                                                        if(k==0)
+                                                        {
+                                                             printf("Produto associado: %s", linha);
+                                                             fclose(fileF2);
+                                                             break;
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                        }
+                                        if(k>2 && k%2==1)
+                                        {
+                                            printf("Quantidade necessaria: %s", linha);
+                                        }
+
+                                    //}
+                                k++;
+                                }
+                            fclose(fileF);
+                            }
+                        }
+                        printf("------------------------\n");
+                        sleep(3);
+                    }
+
                 }
 
             break;
@@ -1664,7 +2071,8 @@ int main()
             printf("5 - Sobremesa\n");
             printf("6 - Bebida\n");
             printf("7 - Pagar\n");
-            printf("8 - Anular\n");
+            printf("8 - Listar Pedido\n");
+            printf("9 - Anular\n");
             printf("\n0 - Voltar\n");
             printf("Selecione uma opcao: ");
             scanf("%d", &opcao);
@@ -1690,8 +2098,8 @@ int main()
 
                                 linha[strcspn(linha, "\n")] = 0; // remover o \n da string linha
 
-                                if(result)
-                                {
+                                //if(result)
+                                //{
                                     if(k==0)
                                     {
                                         printf("%d - %s................", i, linha); //erro, mudar
@@ -1700,10 +2108,9 @@ int main()
                                     {
                                         printf("%s\n", linha);
                                     }
-                                }
+                                //}
                                 k++;
                             }
-
                         fclose(fileF);
                     }
                 }
@@ -1765,8 +2172,8 @@ int main()
 
                                 linha[strcspn(linha, "\n")] = 0; // remover o \n da string linha
 
-                                if(result)
-                                {
+                                //if(result)
+                                //{
                                     if(k==0)
                                     {
                                         printf("%d - %s................", i, linha); //erro, mudar
@@ -1775,7 +2182,7 @@ int main()
                                     {
                                         printf("%s\n", linha);
                                     }
-                                }
+                                //}
                                 k++;
                             }
                         fclose(fileF);
@@ -1838,8 +2245,8 @@ int main()
 
                                 linha[strcspn(linha, "\n")] = 0; // remover o \n da string linha
 
-                                if(result)
-                                {
+                                //if(result)
+                                //{
                                     if(k==0)
                                     {
                                         printf("%d - %s................", i, linha); //erro, mudar
@@ -1848,7 +2255,7 @@ int main()
                                     {
                                         printf("%s\n", linha);
                                     }
-                                }
+                                //}
                                 k++;
                             }
                         fclose(fileF);
@@ -1891,7 +2298,7 @@ int main()
 
             if (opcao  == 4) //////////////////////////////////////////////////////
             {
-            contadorInteiroJantar();
+                contadorInteiroJantar();
 
                 for(int i = 1; contador > i;i++)
                 {
@@ -1911,8 +2318,8 @@ int main()
 
                                 linha[strcspn(linha, "\n")] = 0; // remover o \n da string linha
 
-                                if(result)
-                                {
+                                //if(result)
+                                //{
                                     if(k==0)
                                     {
                                         printf("%d - %s................", i, linha); //erro, mudar
@@ -1921,7 +2328,7 @@ int main()
                                     {
                                         printf("%s\n", linha);
                                     }
-                                }
+                                //}
                                 k++;
                             }
                         fclose(fileF);
@@ -1984,8 +2391,8 @@ int main()
 
                                 linha[strcspn(linha, "\n")] = 0; // remover o \n da string linha
 
-                                if(result)
-                                {
+                                //if(result)
+                                //{
                                     if(k==0)
                                     {
                                         printf("%d - %s................", i, linha); //erro, mudar
@@ -1994,7 +2401,7 @@ int main()
                                     {
                                         printf("%s\n", linha);
                                     }
-                                }
+                                //}
                                 k++;
                             }
                         fclose(fileF);
@@ -2057,8 +2464,8 @@ int main()
 
                                 linha[strcspn(linha, "\n")] = 0; // remover o \n da string linha
 
-                                if(result)
-                                {
+                                //if(result)
+                                //{
                                     if(k==0)
                                     {
                                         printf("%d - %s................", i, linha); //erro, mudar
@@ -2067,7 +2474,7 @@ int main()
                                     {
                                         printf("%s\n", linha);
                                     }
-                                }
+                                //}
                                 k++;
                             }
                         fclose(fileF);
@@ -2141,6 +2548,45 @@ int main()
                 else
                 {
                     printf("Imprima um valor correspondente!");
+                }
+            }
+
+            if(opcao = 8)
+            {
+                strcpy(caminho, "Files/Pedidos/PequenoAlmoco.txt");
+
+                fileF2 = fopen("caminho" ,"r");
+                if (fileF2)
+                {
+                    printf("-----------Pequeno-Almoco------------");
+
+                    if(fileF)
+                    {
+                        int k = 0;
+                        while (!feof(fileF))
+                            {
+                                result = fgets(linha, 100, fileF);
+
+                                linha[strcspn(linha, "\n")] = 0; // remover o \n da string linha
+
+                                //if(result)
+                                //{
+                                    if(k==0)
+                                    {
+                                        printf("%s", linha); //erro, mudar
+
+                                    }
+
+                                //}
+                                k++;
+                            }
+                        fclose(fileF);
+                    }
+
+                    fclose(fileF);
+
+                }else {
+                    printf("Else");
                 }
             }
 
