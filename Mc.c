@@ -9,7 +9,7 @@ int main()
     char* dirnameFuncionarios = "Funcionarios";
     char* dirnameFile = "Files";
     char* dirnameClientes= "Clientes";
-    char  caminho[100], contadorString[100], iString[100], result, linha[100], auxIngrediente[50];
+    char  caminho[100], contadorString[100], iString[100], result, linha[100], auxIngrediente[50], auxIngrediente2[50];
 
     int quantidadeS;
     char ingredienteS[50];
@@ -2102,7 +2102,7 @@ int main()
                                 //{
                                     if(k==0)
                                     {
-                                        printf("%d - %s................", i, linha); //erro, mudar
+                                        printf("%d - %s................", i, linha);
                                     }
                                     if(k == 1)
                                     {
@@ -2176,7 +2176,7 @@ int main()
                                 //{
                                     if(k==0)
                                     {
-                                        printf("%d - %s................", i, linha); //erro, mudar
+                                        printf("%d - %s................", i, linha);
                                     }
                                     if(k == 1)
                                     {
@@ -2249,7 +2249,7 @@ int main()
                                 //{
                                     if(k==0)
                                     {
-                                        printf("%d - %s................", i, linha); //erro, mudar
+                                        printf("%d - %s................", i, linha);
                                     }
                                     if(k == 1)
                                     {
@@ -2322,7 +2322,7 @@ int main()
                                 //{
                                     if(k==0)
                                     {
-                                        printf("%d - %s................", i, linha); //erro, mudar
+                                        printf("%d - %s................", i, linha);
                                     }
                                     if(k == 1)
                                     {
@@ -2395,7 +2395,7 @@ int main()
                                 //{
                                     if(k==0)
                                     {
-                                        printf("%d - %s................", i, linha); //erro, mudar
+                                        printf("%d - %s................", i, linha);
                                     }
                                     if(k == 1)
                                     {
@@ -2521,7 +2521,7 @@ int main()
                 printf("Deseja fatura?\n");
                 printf("1 - Sim\n");
                 printf("2 - Nao\n");
-                printf("0 - Voltar");
+                printf("0 - Voltar\n");
 
                 printf("Selecione uma opcao: ");
                 scanf("%d", aux);
@@ -2529,9 +2529,10 @@ int main()
                 if(aux == 1)
                 {
                     printf("F A T U R A   S I M P L I F I C A D A\n");
-                    printf("Funcionarios 04/06/21 Andre Leite - Tiago Rangel");
-                    printf("Itens");
-                    //Listar o pedido
+                    printf("Funcionarios 04/06/21 Andre Leite - Tiago Rangel\n");
+                    printf("Itens                   Total");
+
+                    strcpy(auxIngrediente2, linha);
 
 
                     printf("Total (com IVA)");
@@ -2553,43 +2554,278 @@ int main()
 
             if(opcao = 8)
             {
+                system("cls");
+                printf("================ P E D I D O ================\n");
+
                 strcpy(caminho, "Files/Pedidos/PequenoAlmoco.txt");
+                fileF = fopen(caminho, "r");
+                int j = 1;
 
-                fileF2 = fopen("caminho" ,"r");
-                if (fileF2)
+                if (fileF)
                 {
-                    printf("-----------Pequeno-Almoco------------");
-
-                    if(fileF)
-                    {
-                        int k = 0;
-                        while (!feof(fileF))
+                    printf("\nP E Q U E N O  -  A L M O C O :\n\n");
+                    int k = 0;
+                    while (!feof(fileF))
+                        {
+                            result = fgets(linha, 100, fileF);
+                            if(result)
                             {
-                                result = fgets(linha, 100, fileF);
+                                strcpy(caminho, "Files/Ementas/PequenoAlmoco/"); //limpar variavel, copia o segundo parametro
+                                linha[strcspn(linha, "\n")] = 0;
+                                strcat(caminho, linha); //junta strings
+                                strcat(caminho, ".txt");
 
-                                linha[strcspn(linha, "\n")] = 0; // remover o \n da string linha
+                                fileF2 = fopen(caminho, "r");
 
-                                //if(result)
-                                //{
-                                    if(k==0)
+                                if(fileF2)
+                                {
+                                    k=0;
+                                    while(!feof(fileF2))
                                     {
-                                        printf("%s", linha); //erro, mudar
-
+                                        result = fgets(linha, 100, fileF2);
+                                        if(result)
+                                        {
+                                            if(k==0)
+                                            {
+                                                printf("%d - %s",j, linha);
+                                                fclose(fileF2);
+                                                j+=1;
+                                                break;
+                                            }
+                                        }
+                                        k++;
                                     }
-
-                                //}
-                                k++;
+                                }
                             }
-                        fclose(fileF);
+                            k++;
+                        }
                     }
-
                     fclose(fileF);
 
-                }else {
-                    printf("Else");
-                }
-            }
+                strcpy(caminho, "Files/Pedidos/Almoco.txt");
+                fileF = fopen(caminho, "r");
 
+                if (fileF)
+                {
+                    printf("\nA L M O C O :\n\n");
+                    int k = 0;
+                    while (!feof(fileF))
+                        {
+                            result = fgets(linha, 100, fileF);
+                            if(result)
+                            {
+                                strcpy(caminho, "Files/Ementas/Almoco/"); //limpar variavel, copia o segundo parametro
+                                linha[strcspn(linha, "\n")] = 0;
+                                strcat(caminho, linha); //junta strings
+                                strcat(caminho, ".txt");
+
+                                fileF2 = fopen(caminho, "r");
+
+                                if(fileF2)
+                                {
+                                    k=0;
+                                    while(!feof(fileF2))
+                                    {
+                                        result = fgets(linha, 100, fileF2);
+                                        if(result)
+                                        {
+                                            if(k==0)
+                                            {
+                                                printf("%d - %s",j, linha);
+                                                fclose(fileF2);
+                                                j+=1;
+                                                break;
+                                            }
+                                        }
+                                        k++;
+                                    }
+                                }
+                            }
+                            k++;
+                        }
+                    }
+                    fclose(fileF);
+
+
+                strcpy(caminho, "Files/Pedidos/Lanche.txt");
+                fileF = fopen(caminho, "r");
+
+                if (fileF)
+                {
+                    printf("\nL A N C H E :\n\n");
+                    int k = 0;
+                    while (!feof(fileF))
+                        {
+                            result = fgets(linha, 100, fileF);
+                            if(result)
+                            {
+                                strcpy(caminho, "Files/Ementas/Lanche/"); //limpar variavel, copia o segundo parametro
+                                linha[strcspn(linha, "\n")] = 0;
+                                strcat(caminho, linha); //junta strings
+                                strcat(caminho, ".txt");
+
+                                fileF2 = fopen(caminho, "r");
+
+                                if(fileF2)
+                                {
+                                    k=0;
+                                    while(!feof(fileF2))
+                                    {
+                                        result = fgets(linha, 100, fileF2);
+                                        if(result)
+                                        {
+                                            if(k==0)
+                                            {
+                                                printf("%d - %s",j, linha);
+                                                fclose(fileF2);
+                                                j+=1;
+                                                break;
+                                            }
+                                        }
+                                        k++;
+                                    }
+                                }
+                            }
+                            k++;
+                        }
+                    }
+                    fclose(fileF);
+
+                strcpy(caminho, "Files/Pedidos/Jantar.txt");
+                fileF = fopen(caminho, "r");
+
+                if (fileF)
+                {
+                    printf("\nJ A N T A R :\n\n");
+                    int k = 0;
+                    while (!feof(fileF))
+                        {
+                            result = fgets(linha, 100, fileF);
+                            if(result)
+                            {
+                                strcpy(caminho, "Files/Ementas/Jantar/"); //limpar variavel, copia o segundo parametro
+                                linha[strcspn(linha, "\n")] = 0;
+                                strcat(caminho, linha); //junta strings
+                                strcat(caminho, ".txt");
+
+                                fileF2 = fopen(caminho, "r");
+
+                                if(fileF2)
+                                {
+                                    k=0;
+                                    while(!feof(fileF2))
+                                    {
+                                        result = fgets(linha, 100, fileF2);
+                                        if(result)
+                                        {
+                                            if(k==0)
+                                            {
+                                                printf("%d - %s",j, linha);
+                                                fclose(fileF2);
+                                                j+=1;
+                                                break;
+                                            }
+                                        }
+                                        k++;
+                                    }
+                                }
+                            }
+                            k++;
+                        }
+                    }
+                    fclose(fileF);
+
+
+                strcpy(caminho, "Files/Pedidos/Sobremesa.txt");
+                fileF = fopen(caminho, "r");
+
+                if (fileF)
+                {
+                    printf("\nS O B R E M E S A :\n\n");
+                    int k = 0;
+                    while (!feof(fileF))
+                        {
+                            result = fgets(linha, 100, fileF);
+                            if(result)
+                            {
+                                strcpy(caminho, "Files/Ementas/Sobremesa/"); //limpar variavel, copia o segundo parametro
+                                linha[strcspn(linha, "\n")] = 0;
+                                strcat(caminho, linha); //junta strings
+                                strcat(caminho, ".txt");
+
+                                fileF2 = fopen(caminho, "r");
+
+                                if(fileF2)
+                                {
+                                    k=0;
+                                    while(!feof(fileF2))
+                                    {
+                                        result = fgets(linha, 100, fileF2);
+                                        if(result)
+                                        {
+                                            if(k==0)
+                                            {
+                                                printf("%d - %s",j, linha);
+                                                fclose(fileF2);
+                                                j+=1;
+                                                break;
+                                            }
+                                        }
+                                        k++;
+                                    }
+                                }
+                            }
+                            k++;
+                        }
+                    }
+                    fclose(fileF);
+
+                strcpy(caminho, "Files/Pedidos/Bebida.txt");
+                fileF = fopen(caminho, "r");
+
+                if (fileF)
+                {
+                    printf("\nB E B I D A :\n\n");
+                    int k = 0;
+                    while (!feof(fileF))
+                        {
+                            result = fgets(linha, 100, fileF);
+                            if(result)
+                            {
+                                strcpy(caminho, "Files/Ementas/Bebida/"); //limpar variavel, copia o segundo parametro
+                                linha[strcspn(linha, "\n")] = 0;
+                                strcat(caminho, linha); //junta strings
+                                strcat(caminho, ".txt");
+
+                                fileF2 = fopen(caminho, "r");
+
+                                if(fileF2)
+                                {
+                                    k=0;
+                                    while(!feof(fileF2))
+                                    {
+                                        result = fgets(linha, 100, fileF2);
+                                        if(result)
+                                        {
+                                            if(k==0)
+                                            {
+                                                printf("%d - %s",j, linha);
+                                                fclose(fileF2);
+                                                j+=1;
+                                                break;
+                                            }
+                                        }
+                                        k++;
+                                    }
+                                }
+                            }
+                            k++;
+                        }
+                    }
+                    fclose(fileF);
+
+
+            }
             break;
 
         case 0:
