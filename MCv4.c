@@ -349,16 +349,16 @@ int main()
                                                     if(k==0)
                                                     {
                                                         printf(GREEN"--------------------\n"RESET);
-                                                        printf(GREEN"Id: %d\n"RESET, i);
-                                                        printf(GREEN"Nome: %s"RESET, linha);
+                                                        printf(CYAN"Id: %d\n"RESET, i);
+                                                        printf(CYAN"Nome: %s"RESET, linha);
                                                     }
                                                     if(k==1)
                                                     {
-                                                        printf(GREEN"Estatuto: %s"RESET, linha);
+                                                        printf(CYAN"Estatuto: %s"RESET, linha);
                                                     }
                                                     if(k==2)
                                                     {
-                                                        printf(GREEN"Salario: %s"RESET, linha);
+                                                        printf(CYAN"Salario: %s"RESET, linha);
                                                     }
 
                                                 k++;
@@ -978,13 +978,13 @@ int main()
                                                 //{
                                                     if(k==0)
                                                     {
-                                                        printf(GREEN"\n--------------------\n"RESET);
-                                                        printf(GREEN"Id: %d\n"RESET, i);
-                                                        printf(GREEN"Engrediente: %s"RESET, linha);
+                                                        printf(CYAN"\n--------------------\n"RESET);
+                                                        printf(CYAN"Id: %d\n"RESET, i);
+                                                        printf(CYAN"Engrediente: %s"RESET, linha);
                                                     }
                                                     if(k==1)
                                                     {
-                                                        printf(GREEN"Quantidade: %s"RESET, linha);
+                                                        printf(CYAN"Quantidade: %s"RESET, linha);
                                                     }
                                                 //}
                                             k++;
@@ -992,7 +992,7 @@ int main()
                                     fclose(fileF);
                                     }
                                 }
-                                printf(GREEN"--------------------\n"RESET);
+                                printf(GREEN"\n--------------------\n"RESET);
 
                                 if(k==0)
                                 {
@@ -1089,8 +1089,7 @@ int main()
                                 fclose(fileContadorAlmoco);
                             }
 
-                            printf(GREEN"Lista de produtos: \n\n"RESET);
-                            printf(GREEN"--------------------\n"RESET);
+                            printf(GREEN"Lista de produtos: \n"RESET);
 
                             contadorInteiroProduto();
 
@@ -1115,13 +1114,13 @@ int main()
                                             //{
                                                 if(k==0)
                                                 {
-                                                    printf(GREEN"Id: %d\n"RESET, i);
-                                                    printf(GREEN"Engrediente: %s"RESET, linha);
+                                                    printf(GREEN"\n--------------------\n"RESET);
+                                                    printf(CYAN"Id: %d\n"RESET, i);
+                                                    printf(CYAN"Engrediente: %s"RESET, linha);
                                                 }
                                                 if(k==1)
                                                 {
-                                                    printf(GREEN"Quantidade: %s"RESET, linha);
-                                                    printf(GREEN"\n--------------------\n"RESET);
+                                                    printf(CYAN"Quantidade: %s"RESET, linha);
 
                                                 }
                                             //}
@@ -1130,6 +1129,7 @@ int main()
                                 fclose(fileF);
                                 }
                             }
+                            printf(GREEN"\n--------------------\n"RESET);
 
                                 if(k==0)
                                 {
@@ -1229,8 +1229,7 @@ int main()
                             }
 
 
-                            printf(GREEN"Lista de produto: \n\n"RESET);
-                            printf(GREEN"--------------------\n"RESET);
+                            printf(GREEN"Lista de produto: \n"RESET);
                             contadorInteiroProduto();
 
                             int k = 0;
@@ -1254,13 +1253,13 @@ int main()
                                             //{
                                                 if(k==0)
                                                 {
-                                                    printf(GREEN"Id: %d\n"RESET, i);
-                                                    printf(GREEN"Engrediente: %s"RESET, linha);
+                                                    printf(GREEN"\n--------------------\n"RESET);
+                                                    printf(CYAN"Id: %d\n"RESET, i);
+                                                    printf(CYAN"Engrediente: %s"RESET, linha);
                                                 }
                                                 if(k==1)
                                                 {
-                                                    printf(GREEN"Quantidade: %s"RESET, linha);
-                                                    printf(GREEN"\n--------------------\n"RESET);
+                                                    printf(CYAN"Quantidade: %s"RESET, linha);
                                                 }
                                             //}
                                         k++;
@@ -1268,6 +1267,7 @@ int main()
                                 fclose(fileF);
                                 }
                             }
+                            printf(GREEN"\n--------------------\n"RESET);
                             if(k==0)
                             {
                                 printf(GREEN"\nAdicione produtos ao sistema para criar uma ementa! (Gerir Stock)\n\n"RESET);
@@ -1311,7 +1311,7 @@ int main()
 
                                 if(aux3 == 1)
                                 {
-                                    printf("\nIntroduza o ID do produto que constitui a ementa: ");
+                                    printf(GREEN"\nIntroduza o ID do produto que constitui a ementa: "RESET);
                                     scanf("%d", &id);
 
                                     int stock;
@@ -1331,7 +1331,7 @@ int main()
                                         printf(GREEN"Ementa criada com sucesso!"RESET);
                                         printf(GREEN"\n-----------------------------------\n"RESET);
                                         fclose(fileF);
-                                        printf("\nPressione qualquer tecla para avancar");
+                                        printf(GREEN"\nPressione qualquer tecla para avancar"RESET);
                                         getch();
                                         system("cls");
                                         break;
@@ -1339,7 +1339,7 @@ int main()
                                         printf(RED"\n-----------------------------------\n"RESET);
                                         printf(RED"Ementa não foi criada!"RESET);
                                         printf(RED"\n-----------------------------------\n"RESET);
-                                        printf(GREEN"\nPressione qualquer tecla para avancar");
+                                        printf(GREEN"\nPressione qualquer tecla para avancar"RESET);
                                         getch();
                                         system("cls");
                                         break;
@@ -1365,7 +1365,7 @@ int main()
 
 
                             printf(GREEN"Lista de produtos\n"RESET);
-                            printf(GREEN"--------------------\n"RESET);
+
                             contadorInteiroProduto();
 
                             int k = 0;
@@ -1389,13 +1389,13 @@ int main()
                                             //{
                                                 if(k==0)
                                                 {
-                                                    printf(GREEN"Id: %d\n"RESET, i);
-                                                    printf(GREEN"Engrediente: %s"RESET, linha);
+                                                    printf(GREEN"\n--------------------\n"RESET);
+                                                    printf(CYAN"Id: %d\n"RESET, i);
+                                                    printf(CYAN"Engrediente: %s"RESET, linha);
                                                 }
                                                 if(k==1)
                                                 {
-                                                    printf(GREEN"Quantidade: %s"RESET, linha);
-                                                    printf(GREEN"\n--------------------\n"RESET);
+                                                    printf(CYAN"Quantidade: %s"RESET, linha);
                                                 }
                                             //}
                                         k++;
@@ -1403,6 +1403,7 @@ int main()
                                 fclose(fileF);
                                 }
                             }
+                            printf(GREEN"\n--------------------\n"RESET);
                             if(k==0)
                             {
                                 printf(GREEN"\nAdicione produtos ao sistema para criar uma ementa! (Gerir Stock)\n\n"RESET);
@@ -1442,7 +1443,7 @@ int main()
                                 printf(GREEN"1 - Sim\n"RESET);
                                 printf(RED"2 - Nao\n"RESET);
                                 printf(GREEN"\Selecione uma opcao:"RESET);
-                                scanf("%d", &opcao);
+                                scanf("%d", &aux3);
 
                                 if(aux3 == 1)
                                 {
@@ -1497,8 +1498,7 @@ int main()
                             }
 
 
-                            printf(GREEN"Lista de produto: \n\n"RESET);
-                            printf(GREEN"--------------------\n"RESET);
+                            printf(GREEN"Lista de produto: \n"RESET);
 
                             contadorInteiroProduto();
 
@@ -1523,13 +1523,13 @@ int main()
                                             //{
                                                 if(k==0)
                                                 {
-                                                    printf(GREEN"Id: %d\n"RESET, i);
-                                                    printf(GREEN"Engrediente: %s"RESET, linha);
+                                                    printf(GREEN"\n--------------------\n"RESET);
+                                                    printf(CYAN"Id: %d\n"RESET, i);
+                                                    printf(CYAN"Engrediente: %s"RESET, linha);
                                                 }
                                                 if(k==1)
                                                 {
-                                                    printf(GREEN"Quantidade: %s"RESET, linha);
-                                                    printf(GREEN"\n--------------------\n"RESET);
+                                                    printf(CYAN"Quantidade: %s"RESET, linha);
                                                 }
                                             //}
                                         k++;
@@ -1537,6 +1537,7 @@ int main()
                                 fclose(fileF);
                                 }
                             }
+                            printf(GREEN"\n--------------------\n"RESET);
                             if(k==0)
                             {
                                 printf(GREEN"\nAdicione produtos ao sistema para criar uma ementa! (Gerir Stock)\n\n"RESET);
@@ -1633,8 +1634,7 @@ int main()
                             }
 
 
-                            printf(GREEN"Lista de produto: \n\n"RESET);
-                            printf(GREEN"--------------------\n"RESET);
+                            printf(GREEN"Lista de produto: \n"RESET);
 
                             contadorInteiroProduto();
 
@@ -1659,13 +1659,13 @@ int main()
                                             //{
                                                 if(k==0)
                                                 {
-                                                    printf(GREEN"Id: %d\n"RESET, i);
-                                                    printf(GREEN"Engrediente: %s"RESET, linha);
+                                                    printf(GREEN"\n--------------------\n"RESET);
+                                                    printf(CYAN"Id: %d\n"RESET, i);
+                                                    printf(CYAN"Engrediente: %s"RESET, linha);
                                                 }
                                                 if(k==1)
                                                 {
-                                                    printf(GREEN"Quantidade: %s"RESET, linha);
-                                                    printf(GREEN"\n--------------------\n"RESET);
+                                                    printf(CYAN"Quantidade: %s"RESET, linha);
                                                 }
                                             //}
                                         k++;
@@ -1673,6 +1673,7 @@ int main()
                                 fclose(fileF);
                                 }
                             }
+                            printf(GREEN"\n--------------------\n"RESET);
                             if(k==0)
                             {
                                 printf(GREEN"\nAdicione produtos ao sistema para criar uma ementa! (Gerir Stock)\n\n"RESET);
@@ -2436,7 +2437,7 @@ int main()
                             printf(GREEN"\Selecione uma opcao: "RESET);
                             scanf("%d", &aux4);
                             system("cls");
-                            printf("Lista de ementas: \n");
+                            printf(GREEN"Lista de ementas: \n\n"RESET);
 
 
                             if(aux4 == 1)
@@ -2467,12 +2468,12 @@ int main()
                                             if(k==0)
                                             {
                                                 printf(GREEN"------------------------\n"RESET);
-                                                printf(GREEN"Id: %d\n"RESET, i);
-                                                printf(GREEN"Nome: %s"RESET, linha);
+                                                printf(CYAN"Id: %d\n"RESET, i);
+                                                printf(CYAN"Nome: %s"RESET, linha);
                                             }
                                             if(k==1)
                                             {
-                                                printf(GREEN"Preco: %s"RESET, linha);
+                                                printf(CYAN"Preco: %s"RESET, linha);
                                             }
                                             if(k>1 && k%2==0)
                                             {
@@ -2494,7 +2495,7 @@ int main()
                                                         {
                                                             if(k==0)
                                                             {
-                                                                 printf(GREEN"Produto associado: %s"RESET, linha);
+                                                                 printf(CYAN"Produto associado: %s"RESET, linha);
                                                                  fclose(fileF2);
                                                                  break;
                                                             }
@@ -2504,7 +2505,7 @@ int main()
                                             }
                                             if(k>2 && k%2==1)
                                             {
-                                                printf(GREEN"Quantidade necessaria: %s"RESET, linha);
+                                                printf(CYAN"Quantidade necessaria: %s"RESET, linha);
                                             }
 
 
@@ -2559,12 +2560,12 @@ int main()
                                             if(k==0)
                                             {
                                                 printf(GREEN"------------------------\n"RESET);
-                                                printf(GREEN"Id: %d\n"RESET, i);
-                                                printf(GREEN"Nome: %s"RESET, linha);
+                                                printf(CYAN"Id: %d\n"RESET, i);
+                                                printf(CYAN"Nome: %s"RESET, linha);
                                             }
                                             if(k==1)
                                             {
-                                                printf(GREEN"Preco: %s"RESET, linha);
+                                                printf(CYAN"Preco: %s"RESET, linha);
                                             }
                                             if(k>1 && k%2==0)
                                             {
@@ -2586,7 +2587,7 @@ int main()
                                                         {
                                                             if(k==0)
                                                             {
-                                                                 printf(GREEN"Produto associado: %s"RESET, linha);
+                                                                 printf(CYAN"Produto associado: %s"RESET, linha);
                                                                  fclose(fileF2);
                                                                  break;
                                                             }
@@ -2596,7 +2597,7 @@ int main()
                                             }
                                             if(k>2 && k%2==1)
                                             {
-                                                printf(GREEN"Quantidade necessaria: %s"RESET, linha);
+                                                printf(CYAN"Quantidade necessaria: %s"RESET, linha);
                                             }
 
                                             k++;
@@ -2650,12 +2651,12 @@ int main()
                                             if(k==0)
                                             {
                                                 printf(GREEN"------------------------\n"RESET);
-                                                printf(GREEN"Id: %d\n"RESET, i);
-                                                printf(GREEN"Nome: %s"RESET, linha);
+                                                printf(CYAN"Id: %d\n"RESET, i);
+                                                printf(CYAN"Nome: %s"RESET, linha);
                                             }
                                             if(k==1)
                                             {
-                                                printf(GREEN"Preco: %s"RESET, linha);
+                                                printf(CYAN"Preco: %s"RESET, linha);
                                             }
                                             if(k>1 && k%2==0)
                                             {
@@ -2677,7 +2678,7 @@ int main()
                                                         {
                                                             if(k==0)
                                                             {
-                                                                 printf(GREEN"Produto associado: %s"RESET, linha);
+                                                                 printf(CYAN"Produto associado: %s"RESET, linha);
                                                                  fclose(fileF2);
                                                                  break;
                                                             }
@@ -2687,7 +2688,7 @@ int main()
                                             }
                                             if(k>2 && k%2==1)
                                             {
-                                                printf(GREEN"Quantidade necessaria: %s"RESET, linha);
+                                                printf(CYAN"Quantidade necessaria: %s"RESET, linha);
                                             }
 
                                             k++;
@@ -2741,12 +2742,12 @@ int main()
                                             if(k==0)
                                             {
                                                 printf(GREEN"------------------------\n"RESET);
-                                                printf(GREEN"Id: %d\n"RESET, i);
-                                                printf(GREEN"Nome: %s"RESET, linha);
+                                                printf(CYAN"Id: %d\n"RESET, i);
+                                                printf(CYAN"Nome: %s"RESET, linha);
                                             }
                                             if(k==1)
                                             {
-                                                printf(GREEN"Preco: %s"RESET, linha);
+                                                printf(CYAN"Preco: %s"RESET, linha);
                                             }
                                             if(k>1 && k%2==0)
                                             {
@@ -2768,7 +2769,7 @@ int main()
                                                         {
                                                             if(k==0)
                                                             {
-                                                                 printf(GREEN"Produto associado: %s"RESET, linha);
+                                                                 printf(CYAN"Produto associado: %s"RESET, linha);
                                                                  fclose(fileF2);
                                                                  break;
                                                             }
@@ -2778,7 +2779,7 @@ int main()
                                             }
                                             if(k>2 && k%2==1)
                                             {
-                                                printf(GREEN"Quantidade necessaria: %s"RESET, linha);
+                                                printf(CYAN"Quantidade necessaria: %s"RESET, linha);
                                             }
 
                                             k++;
@@ -2832,12 +2833,12 @@ int main()
                                             if(k==0)
                                             {
                                                 printf(GREEN"------------------------\n"RESET);
-                                                printf(GREEN"Id: %d\n"RESET, i);
-                                                printf(GREEN"Nome: %s"RESET, linha);
+                                                printf(CYAN"Id: %d\n"RESET, i);
+                                                printf(CYAN"Nome: %s"RESET, linha);
                                             }
                                             if(k==1)
                                             {
-                                                printf(GREEN"Preco: %s"RESET, linha);
+                                                printf(CYAN"Preco: %s"RESET, linha);
                                             }
                                             if(k>1 && k%2==0)
                                             {
@@ -2859,7 +2860,7 @@ int main()
                                                         {
                                                             if(k==0)
                                                             {
-                                                                 printf(GREEN"Produto associado: %s"RESET, linha);
+                                                                 printf(CYAN"Produto associado: %s"RESET, linha);
                                                                  fclose(fileF2);
                                                                  break;
                                                             }
@@ -2869,7 +2870,7 @@ int main()
                                             }
                                             if(k>2 && k%2==1)
                                             {
-                                                printf(GREEN"Quantidade necessaria: %s"RESET, linha);
+                                                printf(CYAN"Quantidade necessaria: %s"RESET, linha);
                                             }
 
                                             k++;
@@ -2923,12 +2924,12 @@ int main()
                                             if(k==0)
                                             {
                                                 printf(GREEN"------------------------\n"RESET);
-                                                printf(GREEN"Id: %d\n"RESET, i);
-                                                printf(GREEN"Nome: %s"RESET, linha);
+                                                printf(CYAN"Id: %d\n"RESET, i);
+                                                printf(CYAN"Nome: %s"RESET, linha);
                                             }
                                             if(k==1)
                                             {
-                                                printf(GREEN"Preco: %s"RESET, linha);
+                                                printf(CYAN"Preco: %s"RESET, linha);
                                             }
                                             if(k>1 && k%2==0)
                                             {
@@ -2950,7 +2951,7 @@ int main()
                                                         {
                                                             if(k==0)
                                                             {
-                                                                 printf(GREEN"Produto associado: %s"RESET, linha);
+                                                                 printf(CYAN"Produto associado: %s"RESET, linha);
                                                                  fclose(fileF2);
                                                                  break;
                                                             }
@@ -2960,7 +2961,7 @@ int main()
                                             }
                                             if(k>2 && k%2==1)
                                             {
-                                                printf(GREEN"Quantidade necessaria: %s"RESET, linha);
+                                                printf(CYAN"Quantidade necessaria: %s"RESET, linha);
                                             }
 
                                             k++;
@@ -3155,7 +3156,7 @@ int main()
                                 printf(YELLOW"--------------Lista cliente--------------\n"RESET);
                                 contadorInteiroClientes();
 
-                                printf(GREEN"\n--------------------\n"RESET);
+                                printf(GREEN"\n----------------------------------------\n"RESET);
 
                                 for(int i = 1; contador > i;i++)
                                 {
@@ -3177,21 +3178,21 @@ int main()
                                                 {
                                                     if(k==0)
                                                     {
-                                                        printf(GREEN"Id: %d\n"RESET, i);
-                                                        printf(GREEN"Nome: %s"RESET, linha);
+                                                        printf(CYAN"Id: %d\n"RESET, i);
+                                                        printf(CYAN"Nome: %s"RESET, linha);
                                                     }
                                                     if(k==1)
                                                     {
-                                                        printf(GREEN"Numero de telemovel: %s"RESET, linha);
+                                                        printf(CYAN"Numero de telemovel: %s"RESET, linha);
                                                     }
                                                     if(k==2)
                                                     {
-                                                        printf(GREEN"NIF: %s"RESET, linha);
+                                                        printf(CYAN"NIF: %s"RESET, linha);
                                                     }
                                                 }
                                             k++;
                                         }
-                                        printf(GREEN"--------------------\n"RESET);
+                                        printf(GREEN"----------------------------------------\n"RESET);
                                         fclose(fileF);
                                     }
                                 }
@@ -3895,7 +3896,7 @@ int main()
 
                         if(aux==1)
                         {
-                            printf(YELLOW"================ F A T U R A   S I M P L I F I C A D A ================\n"RESET);
+                            printf(YELLOW"================ F A T U R A   S I M P L I F I C A D A ================\n\n"RESET);
                             strcpy(caminho, "Files/Pedidos/PequenoAlmoco.txt");
                             fileF = fopen(caminho, "r");
                             int j = 1;
@@ -4035,6 +4036,8 @@ int main()
                                                     printf(CYAN"%s\n"RESET, linha2);
                                                     float custoUnitario = atof(linha2);
                                                     custoTotal += custoUnitario;
+                                                    sleep(1);
+
                                                 }
                                                 else if(z>1 && z%2==0)
                                                 {
@@ -4128,6 +4131,7 @@ int main()
                                                     printf(CYAN"%s\n"RESET, linha2);
                                                     float custoUnitario = atof(linha2);
                                                     custoTotal += custoUnitario;
+                                                    sleep(1);
                                                 }
                                                 else if(z>1 && z%2==0)
                                                 {
@@ -4221,6 +4225,7 @@ int main()
                                                     printf(CYAN"%s\n"RESET, linha2);
                                                     float custoUnitario = atof(linha2);
                                                     custoTotal += custoUnitario;
+                                                    sleep(1);
                                                 }
                                                 else if(z>1 && z%2==0)
                                                 {
@@ -4314,6 +4319,7 @@ int main()
                                                     printf(CYAN"%s\n"RESET, linha2);
                                                     float custoUnitario = atof(linha2);
                                                     custoTotal += custoUnitario;
+                                                    sleep(1);
                                                 }
                                                 else if(z>1 && z%2==0)
                                                 {
@@ -4407,6 +4413,7 @@ int main()
                                                     printf(CYAN"%s\n"RESET, linha2);
                                                     float custoUnitario = atof(linha2);
                                                     custoTotal += custoUnitario;
+                                                    sleep(1);
                                                 }
                                                 else if(z>1 && z%2==0)
                                                 {
@@ -4492,9 +4499,9 @@ int main()
                                       fclose(fileF);
                                 }
 
-                                printf(GREEN"\nTotal (com Iva): %.2f"RESET, custoTotal);
+                                printf(GREEN"\nValor Total a Pagar(com IVA): %.2f"RESET, custoTotal);
                                 custoTotal = custoTotal/1.23;
-                                printf(GREEN"\nValor do IVA (23%): %.2f"RESET, custoTotal);
+                                printf(GREEN"\nValor Total (sem IVA): %.2f"RESET, custoTotal);
 
                                 printf(GREEN"\n\nObrigado pela sua visita, volte sempre!"RESET);
 
