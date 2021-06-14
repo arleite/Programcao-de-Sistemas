@@ -3006,6 +3006,7 @@ int main()
                             printf(GREEN"\n--------------Menu----------------\n"RESET);
                             printf(CYAN"\n1 - Adicionar cliente\n"RESET);
                             printf(CYAN"2 - Listar clientes\n"RESET);
+                            printf(CYAN"3 - Eliminar clientes\n"RESET);
                             printf(RED"\n9 - Voltar ao menu anterior\n"RESET);
                             printf(RED"0 - Voltar ao menu inicial\n"RESET);
                             printf(GREEN"\nSelecione uma opcao: "RESET);
@@ -3129,8 +3130,6 @@ int main()
                                 strcat(caminho, contadorString); //junta strings
                                 strcat(caminho, ".txt");
 
-                                getch();
-
                                 fileF = fopen(caminho, "w");
                                 fprintf(fileF, "%s\n%s\n%s\n", nomeC, numeroTC, nifC);
                                 fclose(fileF);
@@ -3198,6 +3197,80 @@ int main()
                                 printf(GREEN"\nPressione qualquer tecla para avancar"RESET);
                                 getch();
                                 system("cls");
+                            }
+                            if(opc3==3)     //Eliminar cliente
+                            {
+                                printf(GREEN"--------------Eliminar cliente--------------\n\n"RESET);
+                                printf(RED"Introduza o Id do cliente a eliminar: "RESET);
+                                scanf("%d", &id);
+
+                                strcpy(caminho, "Files/Clientes/");
+                                sprintf(iString, "%d", id);
+                                strcat(caminho, iString);
+                                strcat(caminho, ".txt");
+
+                                fileF = fopen(caminho, "r");
+
+                                if(fileF)
+                                {
+                                    int k = 0;
+                                    while (!feof(fileF))
+                                    {
+                                        result = fgets(linha, 100, fileF);
+                                        if(k==0)
+                                        {
+                                            printf(GREEN"\n--------------------\n"RESET);
+                                            printf(GREEN"Nome: %s", linha);
+                                        }
+
+                                        if(k==1)
+                                        {
+                                            printf(GREEN"Telemovel: %s"RESET, linha);
+                                        }
+                                        if(k==2)
+                                        {
+                                            printf(GREEN"NIF: %s"RESET, linha);
+                                        }
+                                        k++;
+                                    }
+
+                                    fclose(fileF);
+
+                                    int aux;
+
+                                    printf(GREEN"--------------------\n"RESET);
+                                    printf(GREEN"\nTem a certeza que pretende eliminar esse cliente?\n"RESET);
+
+                                    printf(GREEN"1 - Sim\n"RESET);
+                                    printf(RED"2 - Nao\n"RESET);
+                                    printf(GREEN"\nSelecione uma opcao: "RESET);
+                                    scanf("%d", &aux);
+
+                                    if(aux == 1)
+                                    {
+                                        remove(caminho);
+                                        printf(GREEN"\n-----------------------------------\n"RESET);
+                                        printf(GREEN"Cliente eliminado com sucesso!"RESET);
+                                        printf(GREEN"\n-----------------------------------\n"RESET);
+                                    }
+                                    if(aux == 2)
+                                    {
+                                        printf(RED"\n------------------------------\n"RESET);
+                                        printf(RED"Cliente nao eliminado!"RESET);
+                                        printf(RED"\n------------------------------\n"RESET);
+                                    }
+                                }
+                                 else{
+                                    printf(RED"\n------------------------------\n"RESET);
+                                    printf(RED"Esse cliente nao existe!"RESET);
+                                    printf(RED"\n-----------------------------\n"RESET);
+                                }
+
+                                printf(GREEN"\nPressiona qualquer tecla para avancar"RESET);
+                                getch();
+
+                                system("cls");
+
                             }
 
                             if(opc3==9)     //Volar ao menu anterior (Menu Ementa)
