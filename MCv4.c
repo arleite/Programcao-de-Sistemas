@@ -74,7 +74,7 @@ int main()
     while (a==1)
     {
         mkdir("Files", 0777);
-        printf(GREEN"\n--------------Menu----------------\n"RESET);
+        printf(YELLOW"\n--------------Menu----------------\n"RESET);
         printf(CYAN"\n1 - Gestao da Empresa\n"RESET);
         printf(CYAN"2 - Cliente\n"RESET);
         printf(RED"\n0 - Sair\n"RESET);
@@ -89,7 +89,7 @@ int main()
             switch (opc1)
             {
             case 1:
-                printf(GREEN"\n--------------Gestao da Empresa----------------\n"RESET);
+                printf(YELLOW"\n--------------Gestao da Empresa----------------\n"RESET);
                 printf(CYAN"\n1 - Gerir funcionarios\n"RESET);
                 printf(CYAN"2 - Gerir stock\n"RESET);
                 printf(CYAN"3 - Gerir ementa\n"RESET);
@@ -105,7 +105,7 @@ int main()
                         while(c==1)
                         {
                             mkdir("Files/Funcionarios", 0777);
-                            printf(GREEN"\n--------------Funcionario----------------\n"RESET);
+                            printf(YELLOW"\n--------------Funcionario----------------\n"RESET);
                             printf(CYAN"\n1 - Adicionar funcionario\n"RESET);
                             printf(CYAN"2 - Remover funcionario\n"RESET);
                             printf(CYAN"3 - Listar funcionarios\n"RESET);
@@ -119,7 +119,7 @@ int main()
 
                                 if(opc3==1)     //Adicionar funcionario
                                 {
-                                    printf("--------------Adicionar funcionario--------------\n\n");
+                                    printf(YELLOW"--------------Adicionar funcionario--------------\n\n"RESET);
                                     printf(GREEN"Nome: "RESET);
                                     fflush(stdin);
                                     fgets(nomeF, 50, stdin);
@@ -251,7 +251,7 @@ int main()
 
                                 if(opc3==2)     //Remover funcionario
                                 {
-                                    printf(GREEN"--------------Eliminar funcionario--------------\n\n"RESET);
+                                    printf(YELLOW"--------------Eliminar funcionario--------------\n\n"RESET);
                                     printf(RED"Introduza o Id do funcionario a eliminar: "RESET);
                                     scanf("%d", &id);
 
@@ -326,7 +326,7 @@ int main()
 
                                 if(opc3==3)     //Listar funcionario
                                 {
-                                    printf(GREEN"--------------Lista funcionario--------------\n\n"RESET);
+                                    printf(YELLOW"--------------Lista funcionario--------------\n\n"RESET);
 
                                     contadorInteiroFuncionarios();
 
@@ -395,7 +395,7 @@ int main()
                         while(c==1)
                         {
                             mkdir("Files/Produtos", 0777);
-                            printf(GREEN"\n--------------Gestao de Stock----------------\n"RESET);
+                            printf(YELLOW"\n--------------Gestao de Stock----------------\n"RESET);
                             printf(CYAN"\n1 - Adicionar produto\n"RESET);
                             printf(CYAN"2 - Editar stock\n"RESET);
                             printf(CYAN"3 - Listar produto\n"RESET);
@@ -410,7 +410,7 @@ int main()
 
                             if(opc3==1)     //Adicionar produto
                             {
-                                printf(GREEN"--------------Adicionar produto--------------\n\n"RESET);
+                                printf(YELLOW"--------------Adicionar produto--------------\n\n"RESET);
                                 printf(GREEN"Ingrediente: "RESET);
                                 fflush(stdin);
                                 fgets(ingredienteS, 50, stdin);
@@ -511,7 +511,7 @@ int main()
                             }
                             if(opc3==2)     //Editar produto
                             {
-                                printf(GREEN"--------------Stock--------------\n\n"RESET);
+                                printf(YELLOW"--------------Stock--------------\n\n"RESET);
                                 printf(GREEN"1 - Adicionar stock\n"RESET);
                                 printf(RED"2 - Remover stock\n"RESET);
                                 printf(GREEN"\nSelecione uma opcao: "RESET);
@@ -693,7 +693,7 @@ int main()
                             }
                             if(opc3==3)     //Listar produto
                             {
-                                printf(GREEN"--------------Lista produto--------------\n"RESET);
+                                printf(YELLOW"--------------Lista produto--------------\n"RESET);
                                 contadorInteiroProduto();
 
                                 for(int i = 1; contador > i;i++)
@@ -735,7 +735,7 @@ int main()
                             }
                             if(opc3==4)     //Eliminar produto
                             {
-                                printf(GREEN"--------------Eliminar produto--------------\n"RESET);
+                                printf(YELLOW"--------------Eliminar produto--------------\n"RESET);
                                 printf(GREEN"\nIntroduza o id do produto a eliminar: "RESET);
                                 fflush(stdin);
                                 fgets(iString, 50, stdin);
@@ -842,7 +842,7 @@ int main()
                     if(opc2==3)
                     {
                         mkdir("Files/Ementas", 0777);
-                        printf(GREEN"\n--------------Ementa----------------\n"RESET);
+                        printf(YELLOW"\n--------------Ementa----------------\n"RESET);
                         printf(CYAN"\n1 - Adicionar ementa\n"RESET);
                         printf(CYAN"2 - Remover ementa\n"RESET);
                         printf(CYAN"3 - Listar ementa\n"RESET);
@@ -859,7 +859,7 @@ int main()
 
                         if (opcao == 1)
                         {
-                            printf(GREEN"--------------Adicionar Ementa--------------\n"RESET);
+                            printf(YELLOW"--------------Adicionar Ementa--------------\n"RESET);
                             printf(GREEN"\nEmenta: "RESET);
                             fflush(stdin);
                             fgets(ementa, 50, stdin);
@@ -954,8 +954,8 @@ int main()
                                     fclose(fileContadorPequenoAlmoco);
                                 }
 
-                                printf(GREEN"Lista de produtos: \n\n"RESET);
-                                printf(GREEN"--------------------\n"RESET);
+                                printf(GREEN"Lista de produtos: \n"RESET);
+
                                 contadorInteiroProduto();
                                 int k = 0;
                                 for(int i = 1; contador > i;i++)
@@ -978,13 +978,13 @@ int main()
                                                 //{
                                                     if(k==0)
                                                     {
+                                                        printf(GREEN"\n--------------------\n"RESET);
                                                         printf(GREEN"Id: %d\n"RESET, i);
                                                         printf(GREEN"Engrediente: %s"RESET, linha);
                                                     }
                                                     if(k==1)
                                                     {
                                                         printf(GREEN"Quantidade: %s"RESET, linha);
-                                                        printf(GREEN"\n--------------------\n"RESET);
                                                     }
                                                 //}
                                             k++;
@@ -992,6 +992,7 @@ int main()
                                     fclose(fileF);
                                     }
                                 }
+                                printf(GREEN"--------------------\n"RESET);
 
                                 if(k==0)
                                 {
@@ -1755,7 +1756,7 @@ int main()
                         if(opcao==2) // Eliminar Ementas
                         {
 
-                            printf(GREEN"--------------Eliminar Ementas--------------\n"RESET);
+                            printf(YELLOW"--------------Eliminar Ementas--------------\n"RESET);
                             printf(GREEN"\nLista de Refeicoes"RESET);
                             printf(CYAN"\n------------------------"RESET);
                             printf(CYAN"\n1 - Pequeno-Almoco\n"RESET);
@@ -1773,7 +1774,7 @@ int main()
 
                             if(opc4 == 1) // Pequeno Almoco
                             {
-                                printf(GREEN"--------------Eliminar Ementa--------------\n"RESET);
+                                printf(YELLOW"--------------Eliminar Ementa--------------\n"RESET);
                                 printf(RED"\nIntroduza o ID da ementa a eliminar: "RESET);
                                 scanf("%d", &id);
 
@@ -1881,7 +1882,7 @@ int main()
 
                             if(opc4 == 2)
                             {
-                                printf(GREEN"--------------Eliminar Ementa--------------\n"RESET);
+                                printf(YELLOW"--------------Eliminar Ementa--------------\n"RESET);
                                 printf(RED"\nIntroduza o ID da ementa a eliminar: "RESET);
                                 scanf("%d", &id);
 
@@ -1988,7 +1989,7 @@ int main()
                             }
                             if(opc4 == 3)
                             {
-                                printf(GREEN"--------------Eliminar Ementa--------------\n"RESET);
+                                printf(YELLOW"--------------Eliminar Ementa--------------\n"RESET);
                                 printf(RED"\nIntroduza o ID da ementa a eliminar: "RESET);
                                 scanf("%d", &id);
 
@@ -2096,7 +2097,7 @@ int main()
                             }
                             if(opc4 == 4)
                             {
-                                printf(GREEN"--------------Eliminar Ementa--------------\n"RESET);
+                                printf(YELLOW"--------------Eliminar Ementa--------------\n"RESET);
                                 printf(RED"\nIntroduza o ID da ementa a eliminar: "RESET);
                                 scanf("%d", &id);
 
@@ -2203,7 +2204,7 @@ int main()
                             }
                             if(opc4 == 5)
                             {
-                                printf(GREEN"--------------Eliminar Ementa--------------\n"RESET);
+                                printf(YELLOW"--------------Eliminar Ementa--------------\n"RESET);
                                 printf(RED"\nIntroduza o ID da ementa a eliminar: "RESET);
                                 scanf("%d", &id);
 
@@ -2310,7 +2311,7 @@ int main()
                             }
                             if(opc4 == 6)
                             {
-                                printf(GREEN"--------------Eliminar Ementa--------------\n"RESET);
+                                printf(YELLOW"--------------Eliminar Ementa--------------\n"RESET);
                                 printf(RED"\nIntroduza o ID da ementa a eliminar: "RESET);
                                 scanf("%d", &id);
 
@@ -2418,7 +2419,7 @@ int main()
                         }
                         if(opcao==3)    //Listar Ementas
                         {
-                            printf(GREEN"--------------Listar Ementas--------------\n"RESET);
+                            printf(YELLOW"--------------Listar Ementas--------------\n"RESET);
                             printf(GREEN"\nLista de Refeicoes"RESET);
                             printf(CYAN"\n------------------------"RESET);
                             printf(CYAN"\n1 - Pequeno-Almoco\n"RESET);
@@ -3003,7 +3004,7 @@ int main()
                         while(c==1)
                         {
                             mkdir("Files/Clientes", 0777);
-                            printf(GREEN"\n--------------Menu----------------\n"RESET);
+                            printf(YELLOW"\n--------------Cliente----------------\n"RESET);
                             printf(CYAN"\n1 - Adicionar cliente\n"RESET);
                             printf(CYAN"2 - Listar clientes\n"RESET);
                             printf(CYAN"3 - Eliminar clientes\n"RESET);
@@ -3017,7 +3018,7 @@ int main()
 
                             if(opc3==1)     //Adicionar cliente
                             {
-                                printf("--------------Adicionar cliente--------------\n");
+                                printf(YELLOW"--------------Adicionar cliente--------------\n"RESET);
                                 printf(GREEN"Nome: "RESET);
                                 fflush(stdin);
                                 fgets(nomeC, 50, stdin);
@@ -3151,7 +3152,7 @@ int main()
                             }
                             if(opc3==2)     //Listar cliente
                             {
-                                printf(GREEN"--------------Lista cliente--------------\n"RESET);
+                                printf(YELLOW"--------------Lista cliente--------------\n"RESET);
                                 contadorInteiroClientes();
 
                                 printf(GREEN"\n--------------------\n"RESET);
@@ -3200,7 +3201,7 @@ int main()
                             }
                             if(opc3==3)     //Eliminar cliente
                             {
-                                printf(GREEN"--------------Eliminar cliente--------------\n\n"RESET);
+                                printf(YELLOW"--------------Eliminar cliente--------------\n\n"RESET);
                                 printf(RED"Introduza o Id do cliente a eliminar: "RESET);
                                 scanf("%d", &id);
 
@@ -3286,7 +3287,7 @@ int main()
                     }
                     if(opc2==5)
                     {
-                        printf(GREEN"------------------Rendimento Total------------------\n"RESET);
+                        printf(YELLOW"------------------Rendimento Total------------------\n"RESET);
                         char saldo[50];
                         if(fileF = fopen("Files/Saldo/SaldoTotal.txt", "r"))
                         {
@@ -3317,7 +3318,7 @@ int main()
                 b=1;
                 while(b==1)
                 {
-                    printf(GREEN"\n--------------Cliente----------------\n"RESET);
+                    printf(YELLOW"\n--------------Cliente----------------\n"RESET);
                     printf(CYAN"\n1 - Pequeno-Almoco\n"RESET);
                     printf(CYAN"2 - Almoco\n"RESET);
                     printf(CYAN"3 - Lanche\n"RESET);
@@ -3337,7 +3338,7 @@ int main()
 
                     if(opc2==1)     //Adicionar PequenoAlmoco
                     {
-                        printf(GREEN"--------------Pequeno Almoco--------------\n\n"RESET);
+                        printf(YELLOW"--------------Pequeno Almoco--------------\n\n"RESET);
                         contadorInteiroPequenoAlmoco();
 
                         for(int i = 1; contador > i;i++)
@@ -3429,7 +3430,7 @@ int main()
 
                     if(opc2==2)     //Adicionar Almoco
                     {
-                        printf(GREEN"--------------Almoco--------------\n\n"RESET);
+                        printf(YELLOW"--------------Almoco--------------\n\n"RESET);
                         contadorInteiroAlmoco();
 
                         for(int i = 1; contador > i;i++)
@@ -3518,7 +3519,7 @@ int main()
                     }
                     if(opc2==3)     //Adicionar Lanche
                     {
-                        printf("--------------Lanche--------------\n\n");
+                        printf(YELLOW"--------------Lanche--------------\n\n"RESET);
                         contadorInteiroLanche();
 
                         for(int i = 1; contador > i;i++)
@@ -3558,8 +3559,6 @@ int main()
                         }
                         if(n>0)
                         {
-
-
                             id = 1;
                             printf(RED"\n0 - Voltar\n"RESET);
                             while(id!=0)
@@ -3609,7 +3608,7 @@ int main()
                     }
                     if(opc2==4)     //Adicionar Jantar
                     {
-                        printf(GREEN"--------------Jantar--------------\n\n"RESET);
+                        printf(YELLOW"--------------Jantar--------------\n\n"RESET);
                         contadorInteiroJantar();
 
                         for(int i = 1; contador > i;i++)
@@ -3700,7 +3699,7 @@ int main()
                     }
                     if(opc2==5)     //Adicionar Sobremesa
                     {
-                        printf(GREEN"--------------Sobremesa--------------\n\n"RESET);
+                        printf(YELLOW"--------------Sobremesa--------------\n\n"RESET);
                         contadorInteiroSobremesa();
 
                         for(int i = 1; contador > i;i++)
@@ -3789,7 +3788,7 @@ int main()
                     }
                     if(opc2==6)     //Adicionar Bebida
                     {
-                        printf("--------------Bebida--------------\n\n");
+                        printf(YELLOW"--------------Bebida--------------\n\n"RESET);
                         contadorInteiroBebida();
 
                         for(int i = 1; contador > i;i++)
@@ -3879,7 +3878,7 @@ int main()
                     }
                     if(opc2==7)     //Pagar
                     {
-                        printf(GREEN"================ P A G A M E N T O ================\n"RESET);
+                        printf(YELLOW"================ P A G A M E N T O ================\n\n"RESET);
                         int aux = 0;
                         printf(GREEN"Deseja fatura?"RESET);
                         printf(GREEN"\n1 - Sim\n"RESET);
@@ -3890,11 +3889,13 @@ int main()
                         scanf("%d", &aux);
                         char auxIngrediente2[100];
                         float custoTotal = 0;
+                        int  n = 0;
 
                         system("cls");
 
                         if(aux==1)
                         {
+                            printf(YELLOW"================ F A T U R A   S I M P L I F I C A D A ================\n"RESET);
                             strcpy(caminho, "Files/Pedidos/PequenoAlmoco.txt");
                             fileF = fopen(caminho, "r");
                             int j = 1;
@@ -3902,6 +3903,7 @@ int main()
 
                             if (fileF)
                             {
+                                n++;
                                 while (!feof(fileF))
                                 {
                                     result = fgets(linha, 100, fileF);
@@ -3929,13 +3931,13 @@ int main()
 
                                                 if(z==0)
                                                 {
-                                                    printf(GREEN"%d - %s................"RESET,j, linha2);
+                                                    printf(CYAN"%d - %s................"RESET,j, linha2);
                                                     j+=1;
                                                 }
 
                                                 else if(z==1)
                                                 {
-                                                    printf(GREEN"%s\n"RESET, linha2);
+                                                    printf(CYAN"%s\n"RESET, linha2);
 
                                                     sleep(1);
                                                     float custoUnitario = atof(linha2);
@@ -3996,6 +3998,7 @@ int main()
 
                             if (fileF)
                             {
+                                n++;
                                 while (!feof(fileF))
                                 {
                                     result = fgets(linha, 100, fileF);
@@ -4023,13 +4026,13 @@ int main()
 
                                                 if(z==0)
                                                 {
-                                                    printf(GREEN"%d - %s................"RESET,j, linha2);
+                                                    printf(CYAN"%d - %s................"RESET,j, linha2);
                                                     j+=1;
                                                 }
 
                                                 else if(z==1)
                                                 {
-                                                    printf(GREEN"%s\n"RESET, linha2);
+                                                    printf(CYAN"%s\n"RESET, linha2);
                                                     float custoUnitario = atof(linha2);
                                                     custoTotal += custoUnitario;
                                                 }
@@ -4088,6 +4091,7 @@ int main()
 
                             if (fileF)
                             {
+                                n++;
                                 while (!feof(fileF))
                                 {
                                     result = fgets(linha, 100, fileF);
@@ -4115,13 +4119,13 @@ int main()
 
                                                 if(z==0)
                                                 {
-                                                    printf(GREEN"%d - %s................"RESET,j, linha2);
+                                                    printf(CYAN"%d - %s................"RESET,j, linha2);
                                                     j+=1;
                                                 }
 
                                                 else if(z==1)
                                                 {
-                                                    printf(GREEN"%s\n"RESET, linha2);
+                                                    printf(CYAN"%s\n"RESET, linha2);
                                                     float custoUnitario = atof(linha2);
                                                     custoTotal += custoUnitario;
                                                 }
@@ -4180,6 +4184,7 @@ int main()
 
                             if (fileF)
                             {
+                                n++;
                                 while (!feof(fileF))
                                 {
                                     result = fgets(linha, 100, fileF);
@@ -4207,13 +4212,13 @@ int main()
 
                                                 if(z==0)
                                                 {
-                                                    printf(GREEN"%d - %s................"RESET,j, linha2);
+                                                    printf(CYAN"%d - %s................"RESET,j, linha2);
                                                     j+=1;
                                                 }
 
                                                 else if(z==1)
                                                 {
-                                                    printf(GREEN"%s\n"RESET, linha2);
+                                                    printf(CYAN"%s\n"RESET, linha2);
                                                     float custoUnitario = atof(linha2);
                                                     custoTotal += custoUnitario;
                                                 }
@@ -4272,6 +4277,7 @@ int main()
 
                             if (fileF)
                             {
+                                n++;
                                 while (!feof(fileF))
                                 {
                                     result = fgets(linha, 100, fileF);
@@ -4299,13 +4305,13 @@ int main()
 
                                                 if(z==0)
                                                 {
-                                                    printf(GREEN"%d - %s................"RESET,j, linha2);
+                                                    printf(CYAN"%d - %s................"RESET,j, linha2);
                                                     j+=1;
                                                 }
 
                                                 else if(z==1)
                                                 {
-                                                    printf(GREEN"%s\n"RESET, linha2);
+                                                    printf(CYAN"%s\n"RESET, linha2);
                                                     float custoUnitario = atof(linha2);
                                                     custoTotal += custoUnitario;
                                                 }
@@ -4364,6 +4370,7 @@ int main()
 
                             if (fileF)
                             {
+                                n++;
                                 while (!feof(fileF))
                                 {
                                     result = fgets(linha, 100, fileF);
@@ -4391,13 +4398,153 @@ int main()
 
                                                 if(z==0)
                                                 {
-                                                    printf(GREEN"%d - %s................"RESET,j, linha2);
+                                                    printf(CYAN"%d - %s................"RESET,j, linha2);
                                                     j+=1;
                                                 }
 
                                                 else if(z==1)
                                                 {
-                                                    printf(GREEN"%s\n"RESET, linha2);
+                                                    printf(CYAN"%s\n"RESET, linha2);
+                                                    float custoUnitario = atof(linha2);
+                                                    custoTotal += custoUnitario;
+                                                }
+                                                else if(z>1 && z%2==0)
+                                                {
+                                                    strcpy(caminho, "Files/Produtos/");
+                                                    linha2[strcspn(linha2, "\n")] = 0;
+                                                    strcat(caminho, linha2);
+                                                    strcat(caminho, ".txt");
+
+                                                    fileF3 = fopen(caminho, "r");
+
+                                                    if(fileF3)
+                                                    {
+                                                        int y = 0;
+                                                        while (!feof(fileF3))
+                                                        {
+
+                                                            result = fgets(linha3, 100, fileF3);
+
+                                                            if (y == 0)
+                                                            {
+                                                                strcpy(nomeProduto, linha3);
+                                                            }
+                                                            if (y == 1)
+                                                            {
+                                                                quantidadeProduto = atof(linha3);
+                                                            }
+                                                            y++;
+                                                        }
+                                                    }
+                                                    fclose(fileF3);
+                                                }
+                                                else if(z>2 && z%2==1)
+                                                {
+                                                    quantidadeEmenta = atof(linha2);
+
+                                                    quantidadeProduto = quantidadeProduto - quantidadeEmenta;
+
+                                                    fileF3 = fopen(caminho, "w");
+                                                    fprintf(fileF3, "%s%.2f", nomeProduto, quantidadeProduto);
+
+                                                    fclose(fileF3);
+                                                }
+                                                z++;
+                                            }
+                                            fclose(fileF2);
+                                        }
+                                    }
+                                }
+                            }
+                            fclose(fileF);
+                            if(n==0)
+                            {
+                                printf(RED"\n==================================="RESET);
+                                printf(RED"\nIntroduza uma ementa ao seu pedido!"RESET);
+                                printf(RED"\n==================================="RESET);
+                                printf(GREEN"\n\nSelecione qualquer tecla para continuar"RESET);
+                                getch();
+                            }
+                            else if(n>0)
+                            {
+                                mkdir("Files/Saldo/", 0777);
+                                strcpy(caminho, "Files/Saldo/SaldoTotal.txt");
+                                char auxcustoTotalS[50];
+                                float auxcustoTotal;
+
+                                if(fileF = fopen(caminho, "r"))
+                                {
+                                    fscanf(fileF, "%s", auxcustoTotalS);
+                                    auxcustoTotal = atof(auxcustoTotalS);
+
+                                    auxcustoTotal += custoTotal; // CERTO
+
+                                    fclose(fileF);
+
+                                    fileF = fopen(caminho, "w");
+                                    fprintf(fileF, "%.2f", auxcustoTotal);
+                                    fclose(fileF);
+                                }
+                                else
+                                {
+                                      fileF = fopen(caminho ,"w");
+                                      fprintf(fileF, "%.2f", custoTotal);
+                                      fclose(fileF);
+                                }
+
+                                printf(GREEN"\nTotal (com Iva): %.2f"RESET, custoTotal);
+                                custoTotal = custoTotal/1.23;
+                                printf(GREEN"\nValor do IVA (23%): %.2f"RESET, custoTotal);
+
+                                printf(GREEN"\n\nObrigado pela sua visita, volte sempre!"RESET);
+
+                                printf(GREEN"\n\nSelecione qualquer tecla para pagar!"RESET);
+                                getch();
+                            }
+                            system("cls");
+                        }
+                        if(aux==2)
+                        {
+                            printf(YELLOW"================ Pagamento ================\n"RESET);
+
+                            strcpy(caminho, "Files/Pedidos/PequenoAlmoco.txt");
+                            fileF = fopen(caminho, "r");
+                            char linha2[100], linha3[100];
+
+                            if (fileF)
+                            {
+                                n++;
+                                while (!feof(fileF))
+                                {
+                                    result = fgets(linha, 100, fileF);
+                                    strcpy(caminho, "Files/Ementas/PequenoAlmoco/"); //limpar variavel, copia o segundo parametro
+                                    linha[strcspn(linha, "\n")] = 0;
+                                    strcat(caminho, linha); //junta strings
+                                    strcat(caminho, ".txt");
+
+                                    fileF2 = fopen(caminho, "r");
+
+                                    if(result)
+                                    {
+                                        if(fileF2)
+                                        {
+                                            int z = 0;
+                                            while(!feof(fileF2))
+                                            {
+                                                result = fgets(linha2, 100, fileF2);
+
+                                                linha2[strcspn(linha2, "\n")] = 0;
+
+                                                char nomeProduto[100];
+                                                float quantidadeProduto;
+                                                float quantidadeEmenta;
+
+                                                if(z==0)
+                                                {
+                                                }
+
+                                                else if(z==1)
+                                                {
                                                     float custoUnitario = atof(linha2);
                                                     custoTotal += custoUnitario;
                                                 }
@@ -4451,43 +4598,498 @@ int main()
                             }
                             fclose(fileF);
 
-                            mkdir("Files/Saldo/", 0777);
-                            strcpy(caminho, "Files/Saldo/SaldoTotal.txt");
-                            char auxcustoTotalS[50];
-                            float auxcustoTotal;
+                            strcpy(caminho, "Files/Pedidos/Almoco.txt");
+                            fileF = fopen(caminho, "r");
 
-                            if(fileF = fopen(caminho, "r"))
+                            if (fileF)
                             {
-                                fscanf(fileF, "%s", auxcustoTotalS);
-                                auxcustoTotal = atof(auxcustoTotalS);
+                                n++;
+                                while (!feof(fileF))
+                                {
+                                    result = fgets(linha, 100, fileF);
+                                    strcpy(caminho, "Files/Ementas/Almoco/"); //limpar variavel, copia o segundo parametro
+                                    linha[strcspn(linha, "\n")] = 0;
+                                    strcat(caminho, linha); //junta strings
+                                    strcat(caminho, ".txt");
 
-                                auxcustoTotal += custoTotal; // CERTO
+                                    fileF2 = fopen(caminho, "r");
 
-                                fclose(fileF);
+                                    if(result)
+                                    {
+                                        if(fileF2)
+                                        {
+                                            int z = 0;
+                                            while(!feof(fileF2))
+                                            {
+                                                result = fgets(linha2, 100, fileF2);
 
-                                fileF = fopen(caminho, "w");
+                                                linha2[strcspn(linha2, "\n")] = 0;
 
-                                fprintf(fileF, "%.2f", auxcustoTotal);
-                                fclose(fileF);
+                                                char nomeProduto[100];
+                                                float quantidadeProduto;
+                                                float quantidadeEmenta;
 
+                                                if(z==0)
+                                                {
+                                                }
+
+                                                else if(z==1)
+                                                {
+                                                    float custoUnitario = atof(linha2);
+                                                    custoTotal += custoUnitario;
+                                                }
+                                                else if(z>1 && z%2==0)
+                                                {
+                                                    strcpy(caminho, "Files/Produtos/");
+                                                    linha2[strcspn(linha2, "\n")] = 0;
+                                                    strcat(caminho, linha2);
+                                                    strcat(caminho, ".txt");
+
+                                                    fileF3 = fopen(caminho, "r");
+
+                                                    if(fileF3)
+                                                    {
+                                                        int y = 0;
+                                                        while (!feof(fileF3))
+                                                        {
+
+                                                            result = fgets(linha3, 100, fileF3);
+
+                                                            if (y == 0)
+                                                            {
+                                                                strcpy(nomeProduto, linha3);
+                                                            }
+                                                            if (y == 1)
+                                                            {
+                                                                quantidadeProduto = atof(linha3);
+                                                            }
+                                                            y++;
+                                                        }
+                                                    }
+                                                    fclose(fileF3);
+                                                }
+                                                else if(z>2 && z%2==1)
+                                                {
+                                                    quantidadeEmenta = atof(linha2);
+
+                                                    quantidadeProduto = quantidadeProduto - quantidadeEmenta;
+
+                                                    fileF3 = fopen(caminho, "w");
+                                                    fprintf(fileF3, "%s%.2f", nomeProduto, quantidadeProduto);
+
+                                                    fclose(fileF3);
+                                                }
+                                                z++;
+                                            }
+                                            fclose(fileF2);
+                                        }
+                                    }
+                                }
                             }
-                            else
+                            fclose(fileF);
+
+                            strcpy(caminho, "Files/Pedidos/Lanche.txt");
+                            fileF = fopen(caminho, "r");
+
+                            if (fileF)
                             {
-                                  fileF = fopen(caminho ,"w");
-                                  fprintf(fileF, "%.2f", custoTotal);
-                                  fclose(fileF);
+                                n++;
+                                while (!feof(fileF))
+                                {
+                                    result = fgets(linha, 100, fileF);
+                                    strcpy(caminho, "Files/Ementas/Lanche/"); //limpar variavel, copia o segundo parametro
+                                    linha[strcspn(linha, "\n")] = 0;
+                                    strcat(caminho, linha); //junta strings
+                                    strcat(caminho, ".txt");
+
+                                    fileF2 = fopen(caminho, "r");
+
+                                    if(result)
+                                    {
+                                        if(fileF2)
+                                        {
+                                            int z = 0;
+                                            while(!feof(fileF2))
+                                            {
+                                                result = fgets(linha2, 100, fileF2);
+
+                                                linha2[strcspn(linha2, "\n")] = 0;
+
+                                                char nomeProduto[100];
+                                                float quantidadeProduto;
+                                                float quantidadeEmenta;
+
+                                                if(z==0)
+                                                {
+                                                }
+
+                                                else if(z==1)
+                                                {
+                                                    float custoUnitario = atof(linha2);
+                                                    custoTotal += custoUnitario;
+                                                }
+                                                else if(z>1 && z%2==0)
+                                                {
+                                                    strcpy(caminho, "Files/Produtos/");
+                                                    linha2[strcspn(linha2, "\n")] = 0;
+                                                    strcat(caminho, linha2);
+                                                    strcat(caminho, ".txt");
+
+                                                    fileF3 = fopen(caminho, "r");
+
+                                                    if(fileF3)
+                                                    {
+                                                        int y = 0;
+                                                        while (!feof(fileF3))
+                                                        {
+
+                                                            result = fgets(linha3, 100, fileF3);
+
+                                                            if (y == 0)
+                                                            {
+                                                                strcpy(nomeProduto, linha3);
+                                                            }
+                                                            if (y == 1)
+                                                            {
+                                                                quantidadeProduto = atof(linha3);
+                                                            }
+                                                            y++;
+                                                        }
+                                                    }
+                                                    fclose(fileF3);
+                                                }
+                                                else if(z>2 && z%2==1)
+                                                {
+                                                    quantidadeEmenta = atof(linha2);
+
+                                                    quantidadeProduto = quantidadeProduto - quantidadeEmenta;
+
+                                                    fileF3 = fopen(caminho, "w");
+                                                    fprintf(fileF3, "%s%.2f", nomeProduto, quantidadeProduto);
+
+                                                    fclose(fileF3);
+                                                }
+                                                z++;
+                                            }
+                                            fclose(fileF2);
+                                        }
+                                    }
+                                }
                             }
+                            fclose(fileF);
 
+                            strcpy(caminho, "Files/Pedidos/Jantar.txt");
+                            fileF = fopen(caminho, "r");
 
-                            ////ASSAJODNSANADADNSADN SKA DKSA DKSA DKSA DA SKD ASKD KSADAKNDKANDKSANDKASNDKA DKA DKAS KDSAKDNASKDJNASKDSAKOJDNASKJ
-                        printf(GREEN"\nSelecione qualquer tecla para pagar!"RESET);
-                        getch();
+                            if (fileF)
+                            {
+                            n++;
+                            while (!feof(fileF))
+                            {
+                                result = fgets(linha, 100, fileF);
+                                strcpy(caminho, "Files/Ementas/Jantar/"); //limpar variavel, copia o segundo parametro
+                                linha[strcspn(linha, "\n")] = 0;
+                                strcat(caminho, linha); //junta strings
+                                strcat(caminho, ".txt");
+
+                                fileF2 = fopen(caminho, "r");
+
+                                if(result)
+                                {
+                                    if(fileF2)
+                                    {
+                                        int z = 0;
+                                        while(!feof(fileF2))
+                                        {
+                                            result = fgets(linha2, 100, fileF2);
+
+                                            linha2[strcspn(linha2, "\n")] = 0;
+
+                                            char nomeProduto[100];
+                                            float quantidadeProduto;
+                                            float quantidadeEmenta;
+
+                                            if(z==0)
+                                            {
+                                            }
+
+                                            else if(z==1)
+                                            {
+                                                float custoUnitario = atof(linha2);
+                                                custoTotal += custoUnitario;
+                                            }
+                                            else if(z>1 && z%2==0)
+                                            {
+                                                strcpy(caminho, "Files/Produtos/");
+                                                linha2[strcspn(linha2, "\n")] = 0;
+                                                strcat(caminho, linha2);
+                                                strcat(caminho, ".txt");
+
+                                                fileF3 = fopen(caminho, "r");
+
+                                                if(fileF3)
+                                                {
+                                                    int y = 0;
+                                                    while (!feof(fileF3))
+                                                    {
+
+                                                        result = fgets(linha3, 100, fileF3);
+
+                                                        if (y == 0)
+                                                        {
+                                                            strcpy(nomeProduto, linha3);
+                                                        }
+                                                        if (y == 1)
+                                                        {
+                                                            quantidadeProduto = atof(linha3);
+                                                        }
+                                                        y++;
+                                                    }
+                                                }
+                                                fclose(fileF3);
+                                            }
+                                            else if(z>2 && z%2==1)
+                                            {
+                                                quantidadeEmenta = atof(linha2);
+
+                                                quantidadeProduto = quantidadeProduto - quantidadeEmenta;
+
+                                                fileF3 = fopen(caminho, "w");
+                                                fprintf(fileF3, "%s%.2f", nomeProduto, quantidadeProduto);
+
+                                                fclose(fileF3);
+                                            }
+                                            z++;
+                                        }
+                                        fclose(fileF2);
+                                    }
+                                }
+                            }
                         }
-                        if(aux==2)
-                        {
+                                fclose(fileF);
 
-                            //AHJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADASDADADASDASDSADSA
+                                strcpy(caminho, "Files/Pedidos/Sobremesa.txt");
+                                fileF = fopen(caminho, "r");
 
+                                if (fileF)
+                                {
+                                    n++;
+                                    while (!feof(fileF))
+                                    {
+                                        result = fgets(linha, 100, fileF);
+                                        strcpy(caminho, "Files/Ementas/Sobremesa/"); //limpar variavel, copia o segundo parametro
+                                        linha[strcspn(linha, "\n")] = 0;
+                                        strcat(caminho, linha); //junta strings
+                                        strcat(caminho, ".txt");
+
+                                        fileF2 = fopen(caminho, "r");
+
+                                        if(result)
+                                        {
+                                            if(fileF2)
+                                            {
+                                                int z = 0;
+                                                while(!feof(fileF2))
+                                                {
+                                                    result = fgets(linha2, 100, fileF2);
+
+                                                    linha2[strcspn(linha2, "\n")] = 0;
+
+                                                    char nomeProduto[100];
+                                                    float quantidadeProduto;
+                                                    float quantidadeEmenta;
+
+                                                    if(z==0)
+                                                    {
+                                                    }
+
+                                                    else if(z==1)
+                                                    {
+                                                        float custoUnitario = atof(linha2);
+                                                        custoTotal += custoUnitario;
+                                                    }
+                                                    else if(z>1 && z%2==0)
+                                                    {
+                                                        strcpy(caminho, "Files/Produtos/");
+                                                        linha2[strcspn(linha2, "\n")] = 0;
+                                                        strcat(caminho, linha2);
+                                                        strcat(caminho, ".txt");
+
+                                                        fileF3 = fopen(caminho, "r");
+
+                                                        if(fileF3)
+                                                        {
+                                                            int y = 0;
+                                                            while (!feof(fileF3))
+                                                            {
+
+                                                                result = fgets(linha3, 100, fileF3);
+
+                                                                if (y == 0)
+                                                                {
+                                                                    strcpy(nomeProduto, linha3);
+                                                                }
+                                                                if (y == 1)
+                                                                {
+                                                                    quantidadeProduto = atof(linha3);
+                                                                }
+                                                                y++;
+                                                            }
+                                                        }
+                                                        fclose(fileF3);
+                                                    }
+                                                    else if(z>2 && z%2==1)
+                                                    {
+                                                        quantidadeEmenta = atof(linha2);
+
+                                                        quantidadeProduto = quantidadeProduto - quantidadeEmenta;
+
+                                                        fileF3 = fopen(caminho, "w");
+                                                        fprintf(fileF3, "%s%.2f", nomeProduto, quantidadeProduto);
+
+                                                        fclose(fileF3);
+                                                    }
+                                                    z++;
+                                                }
+                                                fclose(fileF2);
+                                            }
+                                        }
+                                    }
+                                }
+                                fclose(fileF);
+
+                                strcpy(caminho, "Files/Pedidos/Bebida.txt");
+                                fileF = fopen(caminho, "r");
+
+                                if (fileF)
+                                {
+                                    n++;
+                                    while (!feof(fileF))
+                                    {
+                                        result = fgets(linha, 100, fileF);
+                                        strcpy(caminho, "Files/Ementas/Bebida/"); //limpar variavel, copia o segundo parametro
+                                        linha[strcspn(linha, "\n")] = 0;
+                                        strcat(caminho, linha); //junta strings
+                                        strcat(caminho, ".txt");
+
+                                        fileF2 = fopen(caminho, "r");
+
+                                        if(result)
+                                        {
+                                            if(fileF2)
+                                            {
+                                                int z = 0;
+                                                while(!feof(fileF2))
+                                                {
+                                                    result = fgets(linha2, 100, fileF2);
+
+                                                    linha2[strcspn(linha2, "\n")] = 0;
+
+                                                    char nomeProduto[100];
+                                                    float quantidadeProduto;
+                                                    float quantidadeEmenta;
+
+                                                    if(z==0)
+                                                    {
+                                                    }
+
+                                                    else if(z==1)
+                                                    {
+                                                        float custoUnitario = atof(linha2);
+                                                        custoTotal += custoUnitario;
+                                                    }
+                                                    else if(z>1 && z%2==0)
+                                                    {
+                                                        strcpy(caminho, "Files/Produtos/");
+                                                        linha2[strcspn(linha2, "\n")] = 0;
+                                                        strcat(caminho, linha2);
+                                                        strcat(caminho, ".txt");
+
+                                                        fileF3 = fopen(caminho, "r");
+
+                                                        if(fileF3)
+                                                        {
+                                                            int y = 0;
+                                                            while (!feof(fileF3))
+                                                            {
+
+                                                                result = fgets(linha3, 100, fileF3);
+
+                                                                if (y == 0)
+                                                                {
+                                                                    strcpy(nomeProduto, linha3);
+                                                                }
+                                                                if (y == 1)
+                                                                {
+                                                                    quantidadeProduto = atof(linha3);
+                                                                }
+                                                                y++;
+                                                            }
+                                                        }
+                                                        fclose(fileF3);
+                                                    }
+                                                    else if(z>2 && z%2==1)
+                                                    {
+                                                        quantidadeEmenta = atof(linha2);
+
+                                                        quantidadeProduto = quantidadeProduto - quantidadeEmenta;
+
+                                                        fileF3 = fopen(caminho, "w");
+                                                        fprintf(fileF3, "%s%.2f", nomeProduto, quantidadeProduto);
+
+                                                        fclose(fileF3);
+                                                    }
+                                                    z++;
+                                                }
+                                                fclose(fileF2);
+                                            }
+                                        }
+                                    }
+                                }
+                                fclose(fileF);
+                                if(n==0)
+                                {
+                                    printf(RED"\n==================================="RESET);
+                                    printf(RED"\nIntroduza uma ementa ao seu pedido!"RESET);
+                                    printf(RED"\n==================================="RESET);
+                                    printf(GREEN"\n\nSelecione qualquer tecla para continuar"RESET);
+                                    getch();
+                                }
+                                else if(n>0)
+                                {
+                                    mkdir("Files/Saldo/", 0777);
+                                    strcpy(caminho, "Files/Saldo/SaldoTotal.txt");
+                                    char auxcustoTotalS[50];
+                                    float auxcustoTotal;
+
+                                    if(fileF = fopen(caminho, "r"))
+                                    {
+                                        fscanf(fileF, "%s", auxcustoTotalS);
+                                        auxcustoTotal = atof(auxcustoTotalS);
+
+                                        auxcustoTotal += custoTotal; // CERTO
+
+                                        fclose(fileF);
+
+                                        fileF = fopen(caminho, "w");
+                                        fprintf(fileF, "%.2f", auxcustoTotal);
+                                        fclose(fileF);
+                                    }
+                                    else
+                                    {
+                                          fileF = fopen(caminho ,"w");
+                                          fprintf(fileF, "%.2f", custoTotal);
+                                          fclose(fileF);
+                                    }
+
+                                    printf(GREEN"\nO total a pagar e de %.2f!"RESET, custoTotal);
+
+                                    printf(GREEN"\n\nObrigado pela sua visita, volte sempre!"RESET);
+
+                                    printf(GREEN"\n\nSelecione qualquer tecla para pagar!"RESET);
+                                    getch();
+                                }
+                                system("cls");
                         }
                         remove("Files/Pedidos/PequenoAlmoco.txt");
                         remove("Files/Pedidos/Almoco.txt");
@@ -4500,7 +5102,7 @@ int main()
                     if(opc2==8)     //Listar Pedido
                     {
                         char linha2[100];
-                        printf(GREEN"================ P E D I D O ================\n"RESET);
+                        printf(YELLOW"================ P E D I D O ================\n"RESET);
 
                         strcpy(caminho, "Files/Pedidos/PequenoAlmoco.txt");
                         fileF = fopen(caminho, "r");
@@ -4508,7 +5110,7 @@ int main()
 
                         if (fileF)
                         {
-                            printf(GREEN"\nP E Q U E N O  -  A L M O C O :\n"RESET);
+                            printf(CYAN"\nP E Q U E N O  -  A L M O C O :\n"RESET);
                             int k = 0;
                             while (!feof(fileF))
                             {
@@ -4533,12 +5135,12 @@ int main()
                                                 if(z==0)
                                                 {
 
-                                                    printf(GREEN"\n%d - %s........."RESET,j, linha2);
+                                                    printf(CYAN"\n%d - %s........."RESET,j, linha2);
                                                     j+=1;
                                                 }
                                                 else if(z==1)
                                                 {
-                                                    printf(GREEN"%s"RESET,linha2);
+                                                    printf(CYAN"%s"RESET,linha2);
                                                 }
                                             z++;
                                         }
@@ -4555,7 +5157,7 @@ int main()
 
                         if (fileF)
                         {
-                            printf(GREEN"\nA L M O C O :\n"RESET);
+                            printf(CYAN"\n\nA L M O C O :\n"RESET);
                             int k = 0;
                             while (!feof(fileF))
                             {
@@ -4580,12 +5182,12 @@ int main()
                                                 if(z==0)
                                                 {
 
-                                                    printf(GREEN"\n%d - %s........."RESET,j, linha2);
+                                                    printf(CYAN"\n%d - %s........."RESET,j, linha2);
                                                     j+=1;
                                                 }
                                                 else if(z==1)
                                                 {
-                                                    printf(GREEN"%s"RESET,linha2);
+                                                    printf(CYAN"%s"RESET,linha2);
                                                 }
                                             z++;
                                         }
@@ -4603,7 +5205,7 @@ int main()
 
                         if (fileF)
                         {
-                            printf(GREEN"\nL A N C H E :\n"RESET);
+                            printf(CYAN"\n\nL A N C H E :\n"RESET);
                             int k = 0;
                             while (!feof(fileF))
                             {
@@ -4628,12 +5230,12 @@ int main()
                                                 if(z==0)
                                                 {
 
-                                                    printf(GREEN"\n%d - %s........."RESET,j, linha2);
+                                                    printf(CYAN"\n%d - %s........."RESET,j, linha2);
                                                     j+=1;
                                                 }
                                                 else if(z==1)
                                                 {
-                                                    printf(GREEN"%s"RESET,linha2);
+                                                    printf(CYAN"%s"RESET,linha2);
                                                 }
                                             z++;
                                         }
@@ -4650,7 +5252,7 @@ int main()
 
                         if (fileF)
                         {
-                            printf(GREEN"\nJ A N T A R :\n"RESET);
+                            printf(CYAN"\n\nJ A N T A R :\n"RESET);
                             int k = 0;
                             while (!feof(fileF))
                             {
@@ -4675,12 +5277,12 @@ int main()
                                                 if(z==0)
                                                 {
 
-                                                    printf(GREEN"\n%d - %s........."RESET,j, linha2);
+                                                    printf(CYAN"\n%d - %s........."RESET,j, linha2);
                                                     j+=1;
                                                 }
                                                 else if(z==1)
                                                 {
-                                                    printf(GREEN"%s"RESET,linha2);
+                                                    printf(CYAN"%s"RESET,linha2);
                                                 }
                                             z++;
                                         }
@@ -4699,7 +5301,7 @@ int main()
 
                         if (fileF)
                         {
-                            printf(GREEN"\nS O B R E M E S A :\n"RESET);
+                            printf(CYAN"\n\nS O B R E M E S A :\n"RESET);
                             int k = 0;
                             while (!feof(fileF))
                             {
@@ -4724,12 +5326,12 @@ int main()
                                                 if(z==0)
                                                 {
 
-                                                    printf(GREEN"\n%d - %s........."RESET,j, linha2);
+                                                    printf(CYAN"\n%d - %s........."RESET,j, linha2);
                                                     j+=1;
                                                 }
                                                 else if(z==1)
                                                 {
-                                                    printf(GREEN"%s"RESET,linha2);
+                                                    printf(CYAN"%s"RESET,linha2);
                                                 }
                                             z++;
                                         }
@@ -4746,7 +5348,7 @@ int main()
 
                         if (fileF)
                         {
-                            printf(GREEN"\nB E B I D A :\n"RESET);
+                            printf(CYAN"\n\nB E B I D A :\n"RESET);
                             int k = 0;
                             while (!feof(fileF))
                             {
@@ -4771,12 +5373,12 @@ int main()
                                                 if(z==0)
                                                 {
 
-                                                    printf(GREEN"\n%d - %s........."RESET,j, linha2);
+                                                    printf(CYAN"\n%d - %s........."RESET,j, linha2);
                                                     j+=1;
                                                 }
                                                 else if(z==1)
                                                 {
-                                                    printf(GREEN"%s"RESET,linha2);
+                                                    printf(CYAN"%s"RESET,linha2);
                                                 }
                                             z++;
                                         }
@@ -4795,7 +5397,7 @@ int main()
                         }
                         if(opc2==9)     //Listar Pedido
                         {
-                            printf("================A N U L A R================ \n");
+                            printf(YELLOW"================A N U L A R================ \n"RESET);
 
                             remove("Files/Pedidos/PequenoAlmoco.txt");
                             remove("Files/Pedidos/Almoco.txt");
@@ -4804,11 +5406,11 @@ int main()
                             remove("Files/Pedidos/Sobremesa.txt");
                             remove("Files/Pedidos/Bebidas.txt");
 
-                            printf("\n------------------------------\n");
-                            printf("Pedido anulado com secesso");
-                            printf("\n------------------------------\n");
+                            printf(GREEN"\n------------------------------\n"RESET);
+                            printf(GREEN"Pedido anulado com secesso"RESET);
+                            printf(GREEN"\n------------------------------\n"RESET);
 
-                            printf("\nPresione qualquer tecla para continuar");
+                            printf(GREEN"\nPresione qualquer tecla para continuar"RESET);
                             getch();
                             system("cls");
                         }
@@ -4824,9 +5426,6 @@ int main()
                 break;
                 }
             }
-
         }
-
     }
-
 }
